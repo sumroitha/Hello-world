@@ -1,3 +1,37 @@
+Brief on Banking Functions
+
+Banking functions may be broadly classified into deposit, credit, and loan processing functions. 
+Optimizing and streamlining core banking operations provides huge cost and time savings. 
+A good understanding of the banking process flow is essential to decide on automation for banking. 
+Given below is a brief introduction to the main banking functions.
+
+Customer onboarding: A smooth and quick customer onboarding process wins the trust and loyalty of the customer. 
+Legacy banking institutions depend on manual methods for gathering and verifying customer information. 
+Modernized banks gather customer information through websites, mobile, and third-party platforms. 
+Know your customer (KYC) verification is an important/mandatory part of the customer onboarding process. 
+Owing to the rise in online frauds and financial terrorism, banks have made the KYC process mandatory. 
+Anti-money laundering checks are also mandatory in customer onboarding. 
+Gathering and verifying customer data from multiple sources can be cumbersome and error-prone when done through manual banking.
+
+Loan processing: Loan processing is an exhaustive process with several important steps from loan origination to disbursement. 
+Legacy banking systems process loans manually, which entails tons of paperwork, inordinate delays in approvals and verification, 
+unexplained bottlenecks, increased scope for fraud, and multiple rejections and re-application. 
+Modern banks need to have speedy and efficient loan processing systems that can handle huge volumes of loan originations across multiple platforms.
+
+Credit card processing: Credit and debit card processing is an expansive process that requires accurate capture of data across multiple banking channels
+and real-time updation of bank records. When done manually, credit card processing not only takes time and effort but is also prone to errors and inconsistencies. 
+Automated credit and debit card processing cuts down significantly on the cost and time of processing and ensures 100% accuracy.
+
+Core Banking Operations: Core banking operations make up all the back-end updates in the banking industry. 
+These processes include customer data updates, KYC validations, accounting reconciliations, and overdraft protection. 
+Speed and accuracy are paramount for core banking operations. Manual updates cannot provide the accuracy and speed required in core banking operations. 
+Automated processing, especially robotic process automation (RPA), can increase the accuracy and speed of core banking operations.
+
+Risk and compliance: Banks and financial institutions need to adhere to several policies and regulations. 
+Updates on financial regulations and the creation of new policies is a routine feature in the banking and financial industry. 
+Risk and compliance management is an important function in banking. Banks and financial institutions need to be audit-ready at all times by updating their data and policies. 
+Anti-money laundering and fraud checks, KYC verification, and compliance checks can be effectively done through automation.
+
 Operational activities in the banking industry are:
 
 - Account opening and acceptance of deposits
@@ -11,3 +45,12 @@ Operational activities in the banking industry are:
 - Wealth management
 - Investment banking
 - Overseas banking services
+
+Some of the successful use cases of banking process workflow software are
+
+- Account opening
+- Know your customer (KYC) 
+- Customer onboarding
+- Loan processing
+- Fraud mitigation
+- Risk and compliance management
