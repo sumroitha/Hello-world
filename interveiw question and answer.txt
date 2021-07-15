@@ -1,6 +1,19 @@
-----------------------------------------
-Common Interview Question and Answer:
-----------------------------------------
+Consumer Product Supervisor
+
+Main Responsibility:
+
+• Expand Wing subscriber base through segmentation and analytics of the different key segments for Consumer Business (WAC)
+• Reporting and optimizing end to end product profitability, assessing performance and managing the life cycle
+• Monitors on a weekly and monthly basis the product performance and develops ways to address any decline in numbers
+• Generate campaigns based on targeted segments to drive activity rate and usage
+
+Job Requirements:
+
+• College graduate with knowledge in product management, marketing, end to end project management
+• With 2-3 years work experience
+• Highly analytical with excellent English skills
+
+-----------------------------------------------------
 
 1- Tell me about yourself?
 your name, when and where you grow up, education, work experience and your personal interest. 
@@ -12,63 +25,40 @@ and the last experience is Data Analyst at DMC for 4 years.
 
 2- What are your strength?
 tell positive thing about yourself
-Ex1: I am honest, selt motivated, fast learner, and positive attitude toward my career and my life.
-Ex2: It is self-motivation, I always have 2 phrases in my mind to motivate myself in daily life and work. 
-That two are "Most of the problem always has solution" it ecourage me to do hard word and other one "Keep moving" it help me to doing work. 
+Ex: I am honest, selt motivated, fast learner, and positive attitude toward my career and my life.
 
 3- What are your weaknesses?
 Tell your weakness that you can cover them out
-Ex1: Straightforward , Impatient, Sensitive, more talkative, Trust people very quickly, 
+Ex: Straightforward , Impatient, Sensitive, more talkative, Trust people very quickly, 
 I can't say no to when someone ask for help, Take decisions very quickly, gets nervous when talk to strangers, 
 to speak lie is difficult for me, I am a bit laxy about which I am not interest.
-Ex2: I focus on one thing and want thing to be perfect, but I can do multi thing by prioritize them.
-Ex3: Probably my educational background, I study IT, but now I apply for marketing.
-Ex4: It is Public speaking, but I always try to overcome it by well preparation, practice first, know audience first if possible, go to join early and i have a phrase in my mind "all audiences are human like me".
+Ex: I focus on one thing and want thing to be perfect, but I can do multi thing by prioritize them.
 
 4- Why should I hire you?
-  Ex1: I have experience with Data Analyst that is suitable with your requirement. 
-I will put all my efforts for the good progress of organization.
-
-  Ex2: I can finish the work given to me on time and try my best to fulfill all the need of company from me.
+I have experience with Data Analyst that is suitable with your requirement. 
+I will put all my efforts for the good progress of organization. 
+I can finish the work given to me on time and try my best to fulfill all the need of company from me.
 
 5- Where do you see yourself in 5 years? what are your career goals?
-  Ex1: My short term goal is to get a job in reputed company where I can utilize my skills and improve my career path. 
+My short term goal is to get a job in reputed company where I can utilize my skills and improve my career path. 
 My long term goal is to be in respectable position in that organization.
 
-  Ex2: I looking for role with company that I can grow with professionaly and continue to take responsibilities and challenges.
-Marketing is my passion. and I plan to be best in marketing and look for my resposibilities grow. I am not hang up on title. 
-I would love myself in management position improve myself in leadership as well. 
-
-  Ex3: sample for accounting:
-sample answer-part1:
-In the first 2-3 years, I see myself becoming be a true expert and master at my role as (job title) at (Company name). 
-I plan to really immerse myself in the position, understand areas that can be improved on, really get to know the ins and outs of the business and look for opportunities to make the (department name) team and department as efficient as possible.
-
-sample answer-part2: 
-For the 2-3 years after thta, I see myself as being a key finance business partner and liason to all the other team in the organization.
-I want to be able to extend my expertise and offer help to other departments, whether it be sales, marketing or operations using my skills and knowledge gained from my role.
-
-  Ex4: This position is exactly what I'm looking forward to working in on a long term, and I'm confident that if I do my work with sincerity and the desired level of proficiency, opportunities will inevitably open up for me.
-
 6- What do you know about our company?
-research or learn positive attribute, product and service of that company
-Ex: Wing is well-known mobile money service provider in cambodia such as Money Transfer, Phone Topup, Bill Payment, Online Payment. Wing just change price for money tranfer service to competitive one 2000R and also launch new product "Pay with Wing" that can pay purchases by mobile phone. 
+learn positive attribute, product and service of that company
+Ex: Wing is well-known mobile money service provider in cambodia. Wing just change price for money tranfer service to competetive one 2000R and also launch new product "Pay with Wing" that can pay purchases by mobile phone. 
 
 7- Why are you looking for a job change? Why do you leave your current company?
-  Ex1: My current company is good. I have learnt a lot of thing from them, but I would like to try more challenge work and your company is a good platform where I can learn more.
-
-  Ex2: There is no growth potential ay my current company. I would like to work for company that has more room to grow. 
+I have learnt a lot of thing from my current company, but I would like to learn new thing and your company is a good platform where I can learn more.
 
 8- How well do you handle change?
-take example of way that you did with change in previous company.
-Ex: I find out what is new in change and compare it with my knowledge. 
-if it require to learn, I need to find source in internet or ask people around me. 
+take example of way that did with change in previouse company.
+Ex: flexible and hard work to 
 
 9- Do you work well under pressure? can you work under pressure?
-Ex: I try to stay calm by breathe deeply after that I continue what I need to do by priority order.
+Ex: I try to stay calm by breathe deeply after that prioritize my to do list
 
 10- How do you make important decisions?
-I take my experience to analyze pro and cons of that decision and make it to right way
+I take my experience to analyse pro and cons of that decision and make it to right way
 
 11- Do you have any question to ask me?
 - Job timing
@@ -78,9 +68,17 @@ I take my experience to analyze pro and cons of that decision and make it to rig
 - Can you tell me the history of the company?
 - What kind of person are you looking for?
 - What is the focus of company?
-- Does company have dress code?
+- Do you have dress code?
 - Is this a new position?
 - Can you describe the coporate culture in this company?
 
-Ex: Thanks you for giving this opportunity. I would like to know about job timing and training if I am qualified. 
-Does company have dress code? What kind of person are you looking for?
+Ex: Thanks you for giving this opportunity. I would like to know about job timing and training if pass it. 
+Do you have dress code? What kind of person are you looking for?
+
+
+how are they going to acquire new knowledge? 
+What are their interests for the future? 
+Organizations will offer training, the question is, what will you proactively seek yourself?
+
+Data Scientist
+Cyber Security

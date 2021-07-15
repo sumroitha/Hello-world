@@ -1,0 +1,73 @@
+﻿Software project management tool: GIT version control & Github  & Maven 
+Mobile Development: React Native, Ionic, Cordova
+Javascript Framework: React, Angular 2, Vue.js, Express
+PHP Framework: Laravel, Codeigniter, Symfony
+Java Framework: Spring
+Machine learning, data science, AI: Python (Django framework)
+Ruby Framework: Rails
+Node.js framework: Express
+Digital Marketing: Google Adward, Google Adsense, SEO (Search Engine Optimization)
+Data Structure & Algorithm : 
+--------------------------------------------------
+Data Structure 
+1 - Array (static)
+2 - Hash Tables (dynamic array)
+3 - Stacks (FILO) and Queues (FIFO)
+4- Graphs and Trees
+
+Network:  MDI and MDI-X
+IPv6
+OSPF
+EIGRP
+DNS
+Router series and price
+Switch series and price
+RPG
+ASN.1
+Security: ITIL v3, ITSM,  PMP.
+
+Loan Software feature
+
+Flexcube core banking system
+T24 Core Banking system
+
+Data Analysis, Data Engineer: Using SQL query --> Metrics, A/B Test, ratio, churn
+Social Media: 
+
+Management Basic, done 28-May-2017
+the-7-habits-ofhighly-effective-people
+IT Architecture For Dummies page 262
+successful public speaking is done on 25-Apr-2017.
+Effective Communication Skills page 13, 28
+អំណានជាអំណាច 105
+
+បើចង់ដឹងពីការគ្រប់គ្រងស្ថាប័ន គឺត្រូវអានសៀវភៅ Peter F. Drucker។ 
+បើ ចង់ ចេះ ពី មូលដ្ឋាន នៃភាពជា អ្នកដឹកនាំ គឺ ត្រូវ អាន សៀវភៅ របស់ Xenophon និង Matsushita Kōnosuke
+
+IT Manager:
+----------------------------------
+- Technical Management
+- Technical Understanding
+- Analyzing Information
+- Informing Others
+- Staffing
+- Problem Solving
+- Data Center Management
+- Developing Budgets
+- Coordination
+- Strategic Planning
+- Quality Management
+
+Software Development 
+---------------------------------
+- Knowledge about phase development (design, implementation, verification and requirement
+definition, operational)
+- Knowledge about PHP more than 4 years (have experiences for implements system) and
+have used framework ( also welcome for person who know Java, Objective-C, Python)
+- Knowledge about MySQL more than 2 years (Can performance tuning), and also welcome for
+who can use Oracle, PostgreSQL
+- Knowledge about Git more than 2 years (It is plus if you are experience about development by
+Pull and Request), and we are welcome for you for VirtualBox, Vagrant
+- Knowledge about Object Oriented, MVC, and also welcome who can use Domain Driven
+(DDD)
+- Knowledge about development approach (Waterfall, Agile) 
