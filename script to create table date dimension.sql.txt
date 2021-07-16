@@ -1,0 +1,1334 @@
+USE [dbReferenceMain]
+GO
+/****** Object:  Table [dbo].[tblDatDate]    Script Date: 11/22/2020 5:28:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tblDatDate](
+	[sysDatDateId] [bigint] IDENTITY(1,1) NOT NULL,
+	[sysGrpGroupId_Tenant] [bigint] NOT NULL,
+	[sysDatDateTypeId] [bigint] NOT NULL,
+	[intSpecificDataSetNumber] [bigint] NOT NULL,
+	[datDate] [date] NOT NULL,
+	[sysDatYearMonthId] [bigint] NOT NULL,
+	[sysDatDayOfWeekId] [bigint] NOT NULL,
+	[strFormat_MMxDDxYYYY] [nvarchar](100) NOT NULL,
+	[strFormat_YYYYMMDD] [nvarchar](100) NOT NULL,
+	[strFormat_DDxMonxYYYY] [nvarchar](100) NOT NULL,
+	[intFormat_JulianYYYYDDD] [bigint] NOT NULL,
+	[intSequence_DayInMonth] [bigint] NOT NULL,
+	[intSequence_DayInYear] [bigint] NOT NULL,
+	[intSequence_DaySince1Jan1900] [bigint] NOT NULL,
+	[intSequence_WeekInMonth] [bigint] NOT NULL,
+	[intSequence_WeekInYear] [bigint] NOT NULL,
+	[flgDay_FirstOfWeek] [bit] NOT NULL,
+	[flgDay_FirstOfMonth] [bit] NOT NULL,
+	[flgDay_FirstOfYear] [bit] NOT NULL,
+	[flgDay_LastOfWeek] [bit] NOT NULL,
+	[flgDay_LastOfMonth] [bit] NOT NULL,
+	[flgDay_LastOfYear] [bit] NOT NULL,
+	[flgActive] [bit] NOT NULL,
+	[flgTrusted] [bit] NOT NULL,
+	[flgArchived] [bit] NOT NULL,
+	[flgSecurity] [bit] NOT NULL,
+	[flgPlanned] [bit] NOT NULL,
+	[flgDisplay] [bit] NOT NULL,
+	[flgOther] [bit] NOT NULL,
+ CONSTRAINT [PK_tblDatDate] PRIMARY KEY NONCLUSTERED 
+(
+	[sysDatDateId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Index]
+) ON [fgReferenceMain_Date_Cluster]
+GO
+/****** Object:  Index [CI_tblDatDate]    Script Date: 11/22/2020 5:28:12 PM ******/
+CREATE CLUSTERED INDEX [CI_tblDatDate] ON [dbo].[tblDatDate]
+(
+	[intSpecificDataSetNumber] ASC,
+	[sysGrpGroupId_Tenant] ASC,
+	[sysDatDateTypeId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Cluster]
+GO
+/****** Object:  Table [dbo].[tblDatDateClass]    Script Date: 11/22/2020 5:28:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tblDatDateClass](
+	[sysDatDateClassId] [bigint] IDENTITY(1,1) NOT NULL,
+	[sysGrpGroupId_Tenant] [bigint] NOT NULL,
+	[sysDatDateRealmId] [bigint] NOT NULL,
+	[intSpecificDataSetNumber] [bigint] NOT NULL,
+	[strName] [nvarchar](100) NOT NULL,
+	[strDescription] [nvarchar](500) NULL,
+	[strAbbreviation] [nvarchar](50) NULL,
+	[strColumnHeader] [nvarchar](50) NULL,
+	[strKeyName] [nvarchar](100) NULL,
+	[intSequence] [bigint] NULL,
+	[strDisplayOrder] [nvarchar](20) NULL,
+	[flgCleaning] [bit] NOT NULL,
+	[sysDatDateClassId_CleansedTo] [bigint] NULL,
+	[flgActive] [bit] NOT NULL,
+	[flgTrusted] [bit] NOT NULL,
+	[flgArchived] [bit] NOT NULL,
+	[flgSecurity] [bit] NOT NULL,
+	[flgPlanned] [bit] NOT NULL,
+	[flgDisplay] [bit] NOT NULL,
+	[flgOther] [bit] NOT NULL,
+ CONSTRAINT [PK_tblDatDateClass] PRIMARY KEY NONCLUSTERED 
+(
+	[sysDatDateClassId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Index]
+) ON [fgReferenceMain_Date_Cluster]
+GO
+/****** Object:  Index [CI_tblDatDateClass]    Script Date: 11/22/2020 5:28:12 PM ******/
+CREATE CLUSTERED INDEX [CI_tblDatDateClass] ON [dbo].[tblDatDateClass]
+(
+	[intSpecificDataSetNumber] ASC,
+	[sysGrpGroupId_Tenant] ASC,
+	[sysDatDateRealmId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Cluster]
+GO
+/****** Object:  Table [dbo].[tblDatDateFamily]    Script Date: 11/22/2020 5:28:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tblDatDateFamily](
+	[sysDatDateFamilyId] [bigint] IDENTITY(1,1) NOT NULL,
+	[sysGrpGroupId_Tenant] [bigint] NOT NULL,
+	[sysDatDateClassId] [bigint] NOT NULL,
+	[intSpecificDataSetNumber] [bigint] NOT NULL,
+	[strName] [nvarchar](100) NOT NULL,
+	[strDescription] [nvarchar](500) NULL,
+	[strAbbreviation] [nvarchar](50) NULL,
+	[strColumnHeader] [nvarchar](50) NULL,
+	[strKeyName] [nvarchar](100) NULL,
+	[intSequence] [bigint] NULL,
+	[strDisplayOrder] [nvarchar](20) NULL,
+	[flgCleaning] [bit] NOT NULL,
+	[sysDatDateFamilyId_CleansedTo] [bigint] NULL,
+	[flgActive] [bit] NOT NULL,
+	[flgTrusted] [bit] NOT NULL,
+	[flgArchived] [bit] NOT NULL,
+	[flgSecurity] [bit] NOT NULL,
+	[flgPlanned] [bit] NOT NULL,
+	[flgDisplay] [bit] NOT NULL,
+	[flgOther] [bit] NOT NULL,
+ CONSTRAINT [PK_tblDatDateFamily] PRIMARY KEY NONCLUSTERED 
+(
+	[sysDatDateFamilyId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Index]
+) ON [fgReferenceMain_Date_Cluster]
+GO
+/****** Object:  Index [CI_tblDatDateFamily]    Script Date: 11/22/2020 5:28:12 PM ******/
+CREATE CLUSTERED INDEX [CI_tblDatDateFamily] ON [dbo].[tblDatDateFamily]
+(
+	[intSpecificDataSetNumber] ASC,
+	[sysGrpGroupId_Tenant] ASC,
+	[sysDatDateClassId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Cluster]
+GO
+/****** Object:  Table [dbo].[tblDatDateRealm]    Script Date: 11/22/2020 5:28:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tblDatDateRealm](
+	[sysDatDateRealmId] [bigint] IDENTITY(1,1) NOT NULL,
+	[sysGrpGroupId_Tenant] [bigint] NOT NULL,
+	[intClusterId] [bigint] NOT NULL,
+	[intSpecificDataSetNumber] [bigint] NOT NULL,
+	[strName] [nvarchar](100) NOT NULL,
+	[strDescription] [nvarchar](500) NULL,
+	[strAbbreviation] [nvarchar](50) NULL,
+	[strColumnHeader] [nvarchar](50) NULL,
+	[strKeyName] [nvarchar](100) NULL,
+	[intSequence] [bigint] NULL,
+	[strDisplayOrder] [nvarchar](20) NULL,
+	[flgCleaning] [bit] NOT NULL,
+	[sysDatDateRealmId_CleansedTo] [bigint] NULL,
+	[flgActive] [bit] NOT NULL,
+	[flgTrusted] [bit] NOT NULL,
+	[flgArchived] [bit] NOT NULL,
+	[flgSecurity] [bit] NOT NULL,
+	[flgPlanned] [bit] NOT NULL,
+	[flgDisplay] [bit] NOT NULL,
+	[flgOther] [bit] NOT NULL,
+ CONSTRAINT [PK_tblDatDateRealm] PRIMARY KEY NONCLUSTERED 
+(
+	[sysDatDateRealmId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Index]
+) ON [fgReferenceMain_Date_Cluster]
+GO
+/****** Object:  Index [CI_tblDatDateRealm]    Script Date: 11/22/2020 5:28:12 PM ******/
+CREATE CLUSTERED INDEX [CI_tblDatDateRealm] ON [dbo].[tblDatDateRealm]
+(
+	[intSpecificDataSetNumber] ASC,
+	[sysGrpGroupId_Tenant] ASC,
+	[intClusterId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Cluster]
+GO
+/****** Object:  Table [dbo].[tblDatDateSequence]    Script Date: 11/22/2020 5:28:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tblDatDateSequence](
+	[sysDatDateSequenceId] [bigint] IDENTITY(1,1) NOT NULL,
+	[sysGrpGroupId_Tenant] [bigint] NOT NULL,
+	[sysDatDateSequenceTypeId] [bigint] NOT NULL,
+	[intSpecificDataSetNumber] [bigint] NOT NULL,
+	[sysDatDateId_Begin] [bigint] NOT NULL,
+	[sysDatDateId_End] [bigint] NOT NULL,
+	[flgActive] [bit] NOT NULL,
+	[flgTrusted] [bit] NOT NULL,
+	[flgArchived] [bit] NOT NULL,
+	[flgSecurity] [bit] NOT NULL,
+	[flgPlanned] [bit] NOT NULL,
+	[flgDisplay] [bit] NOT NULL,
+	[flgOther] [bit] NOT NULL,
+ CONSTRAINT [PK_tblDatDateSequence] PRIMARY KEY NONCLUSTERED 
+(
+	[sysDatDateSequenceId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Index]
+) ON [fgReferenceMain_Date_Cluster]
+GO
+/****** Object:  Index [CI_tblDatDateSequence]    Script Date: 11/22/2020 5:28:12 PM ******/
+CREATE CLUSTERED INDEX [CI_tblDatDateSequence] ON [dbo].[tblDatDateSequence]
+(
+	[intSpecificDataSetNumber] ASC,
+	[sysGrpGroupId_Tenant] ASC,
+	[sysDatDateSequenceTypeId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Cluster]
+GO
+/****** Object:  Table [dbo].[tblDatDateSequenceClass]    Script Date: 11/22/2020 5:28:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tblDatDateSequenceClass](
+	[sysDatDateSequenceClassId] [bigint] IDENTITY(1,1) NOT NULL,
+	[sysGrpGroupId_Tenant] [bigint] NOT NULL,
+	[sysDatDateSequenceRealmId] [bigint] NOT NULL,
+	[intSpecificDataSetNumber] [bigint] NOT NULL,
+	[strName] [nvarchar](100) NOT NULL,
+	[strDescription] [nvarchar](500) NULL,
+	[strAbbreviation] [nvarchar](50) NULL,
+	[strColumnHeader] [nvarchar](50) NULL,
+	[strKeyName] [nvarchar](100) NULL,
+	[intSequence] [bigint] NULL,
+	[strDisplayOrder] [nvarchar](20) NULL,
+	[flgCleaning] [bit] NOT NULL,
+	[sysDatDateSequenceClassId_CleansedTo] [bigint] NULL,
+	[flgActive] [bit] NOT NULL,
+	[flgTrusted] [bit] NOT NULL,
+	[flgArchived] [bit] NOT NULL,
+	[flgSecurity] [bit] NOT NULL,
+	[flgPlanned] [bit] NOT NULL,
+	[flgDisplay] [bit] NOT NULL,
+	[flgOther] [bit] NOT NULL,
+ CONSTRAINT [PK_tblDatDateSequenceClass] PRIMARY KEY NONCLUSTERED 
+(
+	[sysDatDateSequenceClassId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Index]
+) ON [fgReferenceMain_Date_Cluster]
+GO
+/****** Object:  Index [CI_tblDatDateSequenceClass]    Script Date: 11/22/2020 5:28:12 PM ******/
+CREATE CLUSTERED INDEX [CI_tblDatDateSequenceClass] ON [dbo].[tblDatDateSequenceClass]
+(
+	[intSpecificDataSetNumber] ASC,
+	[sysGrpGroupId_Tenant] ASC,
+	[sysDatDateSequenceRealmId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Cluster]
+GO
+/****** Object:  Table [dbo].[tblDatDateSequenceFamily]    Script Date: 11/22/2020 5:28:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tblDatDateSequenceFamily](
+	[sysDatDateSequenceFamilyId] [bigint] IDENTITY(1,1) NOT NULL,
+	[sysGrpGroupId_Tenant] [bigint] NOT NULL,
+	[sysDatDateSequenceClassId] [bigint] NOT NULL,
+	[intSpecificDataSetNumber] [bigint] NOT NULL,
+	[strName] [nvarchar](100) NOT NULL,
+	[strDescription] [nvarchar](500) NULL,
+	[strAbbreviation] [nvarchar](50) NULL,
+	[strColumnHeader] [nvarchar](50) NULL,
+	[strKeyName] [nvarchar](100) NULL,
+	[intSequence] [bigint] NULL,
+	[strDisplayOrder] [nvarchar](20) NULL,
+	[flgCleaning] [bit] NOT NULL,
+	[sysDatDateSequenceFamilyId_CleansedTo] [bigint] NULL,
+	[flgActive] [bit] NOT NULL,
+	[flgTrusted] [bit] NOT NULL,
+	[flgArchived] [bit] NOT NULL,
+	[flgSecurity] [bit] NOT NULL,
+	[flgPlanned] [bit] NOT NULL,
+	[flgDisplay] [bit] NOT NULL,
+	[flgOther] [bit] NOT NULL,
+ CONSTRAINT [PK_tblDatDateSequenceFamily] PRIMARY KEY NONCLUSTERED 
+(
+	[sysDatDateSequenceFamilyId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Index]
+) ON [fgReferenceMain_Date_Cluster]
+GO
+/****** Object:  Index [CI_tblDatDateSequenceFamily]    Script Date: 11/22/2020 5:28:12 PM ******/
+CREATE CLUSTERED INDEX [CI_tblDatDateSequenceFamily] ON [dbo].[tblDatDateSequenceFamily]
+(
+	[intSpecificDataSetNumber] ASC,
+	[sysGrpGroupId_Tenant] ASC,
+	[sysDatDateSequenceClassId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Cluster]
+GO
+/****** Object:  Table [dbo].[tblDatDateSequenceRealm]    Script Date: 11/22/2020 5:28:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tblDatDateSequenceRealm](
+	[sysDatDateSequenceRealmId] [bigint] IDENTITY(1,1) NOT NULL,
+	[sysGrpGroupId_Tenant] [bigint] NOT NULL,
+	[intClusterId] [bigint] NOT NULL,
+	[intSpecificDataSetNumber] [bigint] NOT NULL,
+	[strName] [nvarchar](100) NOT NULL,
+	[strDescription] [nvarchar](500) NULL,
+	[strAbbreviation] [nvarchar](50) NULL,
+	[strColumnHeader] [nvarchar](50) NULL,
+	[strKeyName] [nvarchar](100) NULL,
+	[intSequence] [bigint] NULL,
+	[strDisplayOrder] [nvarchar](20) NULL,
+	[flgCleaning] [bit] NOT NULL,
+	[sysDatDateSequenceRealmId_CleansedTo] [bigint] NULL,
+	[flgActive] [bit] NOT NULL,
+	[flgTrusted] [bit] NOT NULL,
+	[flgArchived] [bit] NOT NULL,
+	[flgSecurity] [bit] NOT NULL,
+	[flgPlanned] [bit] NOT NULL,
+	[flgDisplay] [bit] NOT NULL,
+	[flgOther] [bit] NOT NULL,
+ CONSTRAINT [PK_tblDatDateSequenceRealm] PRIMARY KEY NONCLUSTERED 
+(
+	[sysDatDateSequenceRealmId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Index]
+) ON [fgReferenceMain_Date_Cluster]
+GO
+/****** Object:  Index [CI_tblDatDateSequenceRealm]    Script Date: 11/22/2020 5:28:12 PM ******/
+CREATE CLUSTERED INDEX [CI_tblDatDateSequenceRealm] ON [dbo].[tblDatDateSequenceRealm]
+(
+	[intSpecificDataSetNumber] ASC,
+	[sysGrpGroupId_Tenant] ASC,
+	[intClusterId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Cluster]
+GO
+/****** Object:  Table [dbo].[tblDatDateSequenceType]    Script Date: 11/22/2020 5:28:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tblDatDateSequenceType](
+	[sysDatDateSequenceTypeId] [bigint] IDENTITY(1,1) NOT NULL,
+	[sysGrpGroupId_Tenant] [bigint] NOT NULL,
+	[sysDatDateSequenceFamilyId] [bigint] NOT NULL,
+	[intSpecificDataSetNumber] [bigint] NOT NULL,
+	[strName] [nvarchar](100) NOT NULL,
+	[strDescription] [nvarchar](500) NULL,
+	[strAbbreviation] [nvarchar](50) NULL,
+	[strColumnHeader] [nvarchar](50) NULL,
+	[strKeyName] [nvarchar](100) NULL,
+	[intSequence] [bigint] NULL,
+	[strDisplayOrder] [nvarchar](20) NULL,
+	[flgCleaning] [bit] NOT NULL,
+	[sysDatDateSequenceTypeId_CleansedTo] [bigint] NULL,
+	[flgActive] [bit] NOT NULL,
+	[flgTrusted] [bit] NOT NULL,
+	[flgArchived] [bit] NOT NULL,
+	[flgSecurity] [bit] NOT NULL,
+	[flgPlanned] [bit] NOT NULL,
+	[flgDisplay] [bit] NOT NULL,
+	[flgOther] [bit] NOT NULL,
+ CONSTRAINT [PK_tblDatDateSequenceType] PRIMARY KEY NONCLUSTERED 
+(
+	[sysDatDateSequenceTypeId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Index]
+) ON [fgReferenceMain_Date_Cluster]
+GO
+/****** Object:  Index [CI_tblDatDateSequenceType]    Script Date: 11/22/2020 5:28:12 PM ******/
+CREATE CLUSTERED INDEX [CI_tblDatDateSequenceType] ON [dbo].[tblDatDateSequenceType]
+(
+	[intSpecificDataSetNumber] ASC,
+	[sysGrpGroupId_Tenant] ASC,
+	[sysDatDateSequenceFamilyId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Cluster]
+GO
+/****** Object:  Table [dbo].[tblDatDateType]    Script Date: 11/22/2020 5:28:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tblDatDateType](
+	[sysDatDateTypeId] [bigint] IDENTITY(1,1) NOT NULL,
+	[sysGrpGroupId_Tenant] [bigint] NOT NULL,
+	[sysDatDateFamilyId] [bigint] NOT NULL,
+	[intSpecificDataSetNumber] [bigint] NOT NULL,
+	[strName] [nvarchar](100) NOT NULL,
+	[strDescription] [nvarchar](500) NULL,
+	[strAbbreviation] [nvarchar](50) NULL,
+	[strColumnHeader] [nvarchar](50) NULL,
+	[strKeyName] [nvarchar](100) NULL,
+	[intSequence] [bigint] NULL,
+	[strDisplayOrder] [nvarchar](20) NULL,
+	[flgCleaning] [bit] NOT NULL,
+	[sysDatDateTypeId_CleansedTo] [bigint] NULL,
+	[flgActive] [bit] NOT NULL,
+	[flgTrusted] [bit] NOT NULL,
+	[flgArchived] [bit] NOT NULL,
+	[flgSecurity] [bit] NOT NULL,
+	[flgPlanned] [bit] NOT NULL,
+	[flgDisplay] [bit] NOT NULL,
+	[flgOther] [bit] NOT NULL,
+ CONSTRAINT [PK_tblDatDateType] PRIMARY KEY NONCLUSTERED 
+(
+	[sysDatDateTypeId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Index]
+) ON [fgReferenceMain_Date_Cluster]
+GO
+/****** Object:  Index [CI_tblDatDateType]    Script Date: 11/22/2020 5:28:12 PM ******/
+CREATE CLUSTERED INDEX [CI_tblDatDateType] ON [dbo].[tblDatDateType]
+(
+	[intSpecificDataSetNumber] ASC,
+	[sysGrpGroupId_Tenant] ASC,
+	[sysDatDateFamilyId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Cluster]
+GO
+/****** Object:  Table [dbo].[tblDatDayOfWeek]    Script Date: 11/22/2020 5:28:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tblDatDayOfWeek](
+	[sysDatDayOfWeekId] [bigint] IDENTITY(1,1) NOT NULL,
+	[sysGrpGroupId_Tenant] [bigint] NOT NULL,
+	[intSpecificDataSetNumber] [bigint] NOT NULL,
+	[strName] [nvarchar](100) NOT NULL,
+	[strDescription] [nvarchar](500) NULL,
+	[strAbbreviation] [nvarchar](50) NULL,
+	[strColumnHeader] [nvarchar](50) NULL,
+	[strKeyName] [nvarchar](100) NULL,
+	[intSequence] [bigint] NOT NULL,
+	[strFormat_02Code] [nvarchar](100) NOT NULL,
+	[flgDay_IsWeekday] [bit] NULL,
+	[strDisplayOrder] [nvarchar](20) NULL,
+	[flgCleaning] [bit] NOT NULL,
+	[sysDatDayOfWeekId_CleansedTo] [bigint] NULL,
+	[flgActive] [bit] NOT NULL,
+	[flgTrusted] [bit] NOT NULL,
+	[flgArchived] [bit] NOT NULL,
+	[flgSecurity] [bit] NOT NULL,
+	[flgPlanned] [bit] NOT NULL,
+	[flgDisplay] [bit] NOT NULL,
+	[flgOther] [bit] NOT NULL,
+ CONSTRAINT [PK_tblDatDayOfWeek] PRIMARY KEY NONCLUSTERED 
+(
+	[sysDatDayOfWeekId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Index]
+) ON [fgReferenceMain_Date_Cluster]
+GO
+/****** Object:  Index [CI_tblDatDayOfWeek]    Script Date: 11/22/2020 5:28:12 PM ******/
+CREATE CLUSTERED INDEX [CI_tblDatDayOfWeek] ON [dbo].[tblDatDayOfWeek]
+(
+	[intSpecificDataSetNumber] ASC,
+	[sysGrpGroupId_Tenant] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Cluster]
+GO
+/****** Object:  Table [dbo].[tblDatMonth]    Script Date: 11/22/2020 5:28:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tblDatMonth](
+	[sysDatMonthId] [bigint] IDENTITY(1,1) NOT NULL,
+	[sysGrpGroupId_Tenant] [bigint] NOT NULL,
+	[intSpecificDataSetNumber] [bigint] NOT NULL,
+	[strName] [nvarchar](100) NOT NULL,
+	[strDescription] [nvarchar](500) NULL,
+	[strAbbreviation] [nvarchar](50) NULL,
+	[strColumnHeader] [nvarchar](50) NULL,
+	[strKeyName] [nvarchar](100) NULL,
+	[intSequence] [bigint] NULL,
+	[strDisplayOrder] [nvarchar](20) NULL,
+	[flgCleaning] [bit] NOT NULL,
+	[sysDatMonthId_CleansedTo] [bigint] NULL,
+	[flgActive] [bit] NOT NULL,
+	[flgTrusted] [bit] NOT NULL,
+	[flgArchived] [bit] NOT NULL,
+	[flgSecurity] [bit] NOT NULL,
+	[flgPlanned] [bit] NOT NULL,
+	[flgDisplay] [bit] NOT NULL,
+	[flgOther] [bit] NOT NULL,
+ CONSTRAINT [PK_tblDatMonth] PRIMARY KEY NONCLUSTERED 
+(
+	[sysDatMonthId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Index]
+) ON [fgReferenceMain_Date_Cluster]
+GO
+/****** Object:  Index [CI_tblDatMonth]    Script Date: 11/22/2020 5:28:12 PM ******/
+CREATE CLUSTERED INDEX [CI_tblDatMonth] ON [dbo].[tblDatMonth]
+(
+	[intSpecificDataSetNumber] ASC,
+	[sysGrpGroupId_Tenant] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Cluster]
+GO
+/****** Object:  Table [dbo].[tblDatYear]    Script Date: 11/22/2020 5:28:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tblDatYear](
+	[sysDatYearId] [bigint] IDENTITY(1,1) NOT NULL,
+	[sysGrpGroupId_Tenant] [bigint] NOT NULL,
+	[intSpecificDataSetNumber] [bigint] NOT NULL,
+	[strName] [nvarchar](100) NOT NULL,
+	[strDescription] [nvarchar](500) NULL,
+	[strAbbreviation] [nvarchar](50) NULL,
+	[strColumnHeader] [nvarchar](50) NULL,
+	[strKeyName] [nvarchar](100) NULL,
+	[intSequence] [bigint] NULL,
+	[strDisplayOrder] [nvarchar](20) NULL,
+	[flgCleaning] [bit] NOT NULL,
+	[sysDatYearId_CleansedTo] [bigint] NULL,
+	[flgActive] [bit] NOT NULL,
+	[flgTrusted] [bit] NOT NULL,
+	[flgArchived] [bit] NOT NULL,
+	[flgSecurity] [bit] NOT NULL,
+	[flgPlanned] [bit] NOT NULL,
+	[flgDisplay] [bit] NOT NULL,
+	[flgOther] [bit] NOT NULL,
+ CONSTRAINT [PK_tblDatYear] PRIMARY KEY NONCLUSTERED 
+(
+	[sysDatYearId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Index]
+) ON [fgReferenceMain_Date_Cluster]
+GO
+/****** Object:  Index [CI_tblDatYear]    Script Date: 11/22/2020 5:28:12 PM ******/
+CREATE CLUSTERED INDEX [CI_tblDatYear] ON [dbo].[tblDatYear]
+(
+	[intSpecificDataSetNumber] ASC,
+	[sysGrpGroupId_Tenant] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Cluster]
+GO
+/****** Object:  Table [dbo].[tblDatYearMonth]    Script Date: 11/22/2020 5:28:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tblDatYearMonth](
+	[sysDatYearMonthId] [bigint] IDENTITY(1,1) NOT NULL,
+	[sysGrpGroupId_Tenant] [bigint] NOT NULL,
+	[intSpecificDataSetNumber] [bigint] NOT NULL,
+	[sysDatMonthId] [bigint] NOT NULL,
+	[sysDatYearId] [bigint] NOT NULL,
+	[strFormat_MMxYYYY] [nvarchar](100) NULL,
+	[strFormat_MonxYYYY] [nvarchar](100) NULL,
+	[strFormat_YYYYxMM] [nvarchar](100) NULL,
+	[strFormat_YYYYxMon] [nvarchar](100) NULL,
+	[strDisplayOrder] [nvarchar](20) NULL,
+	[flgCleaning] [bit] NOT NULL,
+	[sysDatYearMonthId_CleansedTo] [bigint] NULL,
+	[flgActive] [bit] NOT NULL,
+	[flgTrusted] [bit] NOT NULL,
+	[flgArchived] [bit] NOT NULL,
+	[flgSecurity] [bit] NOT NULL,
+	[flgPlanned] [bit] NOT NULL,
+	[flgDisplay] [bit] NOT NULL,
+	[flgOther] [bit] NOT NULL,
+ CONSTRAINT [PK_tblDatYearMonth] PRIMARY KEY NONCLUSTERED 
+(
+	[sysDatYearMonthId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Index]
+) ON [fgReferenceMain_Date_Cluster]
+GO
+/****** Object:  Index [CI_tblDatYearMonth]    Script Date: 11/22/2020 5:28:12 PM ******/
+CREATE CLUSTERED INDEX [CI_tblDatYearMonth] ON [dbo].[tblDatYearMonth]
+(
+	[intSpecificDataSetNumber] ASC,
+	[sysGrpGroupId_Tenant] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Cluster]
+GO
+/****** Object:  Index [IX_tblDatDate_Date_Inc_DateId]    Script Date: 11/22/2020 5:28:12 PM ******/
+CREATE NONCLUSTERED INDEX [IX_tblDatDate_Date_Inc_DateId] ON [dbo].[tblDatDate]
+(
+	[datDate] ASC
+)
+INCLUDE([sysDatDateId]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Index]
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Index [UI_tblDatDateClass]    Script Date: 11/22/2020 5:28:12 PM ******/
+CREATE UNIQUE NONCLUSTERED INDEX [UI_tblDatDateClass] ON [dbo].[tblDatDateClass]
+(
+	[sysDatDateRealmId] ASC,
+	[sysGrpGroupId_Tenant] ASC,
+	[strName] ASC,
+	[strKeyName] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Index]
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Index [UI_tblDatDateFamily]    Script Date: 11/22/2020 5:28:12 PM ******/
+CREATE UNIQUE NONCLUSTERED INDEX [UI_tblDatDateFamily] ON [dbo].[tblDatDateFamily]
+(
+	[sysDatDateClassId] ASC,
+	[sysGrpGroupId_Tenant] ASC,
+	[strName] ASC,
+	[strKeyName] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Index]
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Index [UI_tblDatDateRealm]    Script Date: 11/22/2020 5:28:12 PM ******/
+CREATE UNIQUE NONCLUSTERED INDEX [UI_tblDatDateRealm] ON [dbo].[tblDatDateRealm]
+(
+	[intClusterId] ASC,
+	[sysGrpGroupId_Tenant] ASC,
+	[strName] ASC,
+	[strKeyName] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Index]
+GO
+/****** Object:  Index [UI_tblDatDateSequence]    Script Date: 11/22/2020 5:28:12 PM ******/
+CREATE UNIQUE NONCLUSTERED INDEX [UI_tblDatDateSequence] ON [dbo].[tblDatDateSequence]
+(
+	[sysDatDateSequenceTypeId] ASC,
+	[sysGrpGroupId_Tenant] ASC,
+	[sysDatDateId_Begin] ASC,
+	[sysDatDateId_End] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Index]
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Index [UI_tblDatDateSequenceClass]    Script Date: 11/22/2020 5:28:12 PM ******/
+CREATE UNIQUE NONCLUSTERED INDEX [UI_tblDatDateSequenceClass] ON [dbo].[tblDatDateSequenceClass]
+(
+	[sysDatDateSequenceRealmId] ASC,
+	[sysGrpGroupId_Tenant] ASC,
+	[strName] ASC,
+	[strKeyName] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Index]
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Index [UI_tblDatDateSequenceFamily]    Script Date: 11/22/2020 5:28:12 PM ******/
+CREATE UNIQUE NONCLUSTERED INDEX [UI_tblDatDateSequenceFamily] ON [dbo].[tblDatDateSequenceFamily]
+(
+	[sysDatDateSequenceClassId] ASC,
+	[sysGrpGroupId_Tenant] ASC,
+	[strName] ASC,
+	[strKeyName] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Index]
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Index [UI_tblDatDateSequenceRealm]    Script Date: 11/22/2020 5:28:12 PM ******/
+CREATE UNIQUE NONCLUSTERED INDEX [UI_tblDatDateSequenceRealm] ON [dbo].[tblDatDateSequenceRealm]
+(
+	[intClusterId] ASC,
+	[sysGrpGroupId_Tenant] ASC,
+	[strName] ASC,
+	[strKeyName] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Index]
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Index [UI_tblDatDateSequenceType]    Script Date: 11/22/2020 5:28:12 PM ******/
+CREATE UNIQUE NONCLUSTERED INDEX [UI_tblDatDateSequenceType] ON [dbo].[tblDatDateSequenceType]
+(
+	[sysDatDateSequenceFamilyId] ASC,
+	[sysGrpGroupId_Tenant] ASC,
+	[strName] ASC,
+	[strKeyName] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Index]
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Index [UI_tblDatDateType]    Script Date: 11/22/2020 5:28:12 PM ******/
+CREATE UNIQUE NONCLUSTERED INDEX [UI_tblDatDateType] ON [dbo].[tblDatDateType]
+(
+	[sysDatDateFamilyId] ASC,
+	[sysGrpGroupId_Tenant] ASC,
+	[strName] ASC,
+	[strKeyName] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Index]
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Index [UI_tblDatDayOfWeek]    Script Date: 11/22/2020 5:28:12 PM ******/
+CREATE UNIQUE NONCLUSTERED INDEX [UI_tblDatDayOfWeek] ON [dbo].[tblDatDayOfWeek]
+(
+	[sysGrpGroupId_Tenant] ASC,
+	[strName] ASC,
+	[strKeyName] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Index]
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Index [UI_tblDatMonth]    Script Date: 11/22/2020 5:28:12 PM ******/
+CREATE UNIQUE NONCLUSTERED INDEX [UI_tblDatMonth] ON [dbo].[tblDatMonth]
+(
+	[sysGrpGroupId_Tenant] ASC,
+	[strName] ASC,
+	[strKeyName] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Index]
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Index [UI_tblDatYear]    Script Date: 11/22/2020 5:28:12 PM ******/
+CREATE UNIQUE NONCLUSTERED INDEX [UI_tblDatYear] ON [dbo].[tblDatYear]
+(
+	[sysGrpGroupId_Tenant] ASC,
+	[strName] ASC,
+	[strKeyName] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [fgReferenceMain_Date_Index]
+GO
+ALTER TABLE [dbo].[tblDatDate] ADD  CONSTRAINT [DF_tblDatDate_sysGrpGroupId_Tenant]  DEFAULT (NULL) FOR [sysGrpGroupId_Tenant]
+GO
+ALTER TABLE [dbo].[tblDatDate] ADD  CONSTRAINT [DF_tblDatDate_sysDatDateTypeId]  DEFAULT (NULL) FOR [sysDatDateTypeId]
+GO
+ALTER TABLE [dbo].[tblDatDate] ADD  CONSTRAINT [DF_tblDatDate_intSpecificDataSetNumber]  DEFAULT ((1325)) FOR [intSpecificDataSetNumber]
+GO
+ALTER TABLE [dbo].[tblDatDate] ADD  CONSTRAINT [DF_tblDatDate_datDate]  DEFAULT (NULL) FOR [datDate]
+GO
+ALTER TABLE [dbo].[tblDatDate] ADD  CONSTRAINT [DF_tblDatDate_sysDatYearMonthId]  DEFAULT (NULL) FOR [sysDatYearMonthId]
+GO
+ALTER TABLE [dbo].[tblDatDate] ADD  CONSTRAINT [DF_tblDatDate_sysDatDayOfWeekId]  DEFAULT (NULL) FOR [sysDatDayOfWeekId]
+GO
+ALTER TABLE [dbo].[tblDatDate] ADD  CONSTRAINT [DF_tblDatDate_strFormat_MMxDDxYYYY]  DEFAULT (NULL) FOR [strFormat_MMxDDxYYYY]
+GO
+ALTER TABLE [dbo].[tblDatDate] ADD  CONSTRAINT [DF_tblDatDate_strFormat_YYYYMMDD]  DEFAULT (NULL) FOR [strFormat_YYYYMMDD]
+GO
+ALTER TABLE [dbo].[tblDatDate] ADD  CONSTRAINT [DF_tblDatDate_strFormat_DDxMonxYYYY]  DEFAULT (NULL) FOR [strFormat_DDxMonxYYYY]
+GO
+ALTER TABLE [dbo].[tblDatDate] ADD  CONSTRAINT [DF_tblDatDate_intFormat_JulianYYYYDDD]  DEFAULT (NULL) FOR [intFormat_JulianYYYYDDD]
+GO
+ALTER TABLE [dbo].[tblDatDate] ADD  CONSTRAINT [DF_tblDatDate_intSequence_DayInMonth]  DEFAULT (NULL) FOR [intSequence_DayInMonth]
+GO
+ALTER TABLE [dbo].[tblDatDate] ADD  CONSTRAINT [DF_tblDatDate_intSequence_DayInYear]  DEFAULT (NULL) FOR [intSequence_DayInYear]
+GO
+ALTER TABLE [dbo].[tblDatDate] ADD  CONSTRAINT [DF_tblDatDate_intSequence_DaySince1Jan1900]  DEFAULT (NULL) FOR [intSequence_DaySince1Jan1900]
+GO
+ALTER TABLE [dbo].[tblDatDate] ADD  CONSTRAINT [DF_tblDatDate_intSequence_WeekInMonth]  DEFAULT (NULL) FOR [intSequence_WeekInMonth]
+GO
+ALTER TABLE [dbo].[tblDatDate] ADD  CONSTRAINT [DF_tblDatDate_intSequence_WeekInYear]  DEFAULT (NULL) FOR [intSequence_WeekInYear]
+GO
+ALTER TABLE [dbo].[tblDatDate] ADD  CONSTRAINT [DF_tblDatDate_flgDay_FirstOfWeek]  DEFAULT (NULL) FOR [flgDay_FirstOfWeek]
+GO
+ALTER TABLE [dbo].[tblDatDate] ADD  CONSTRAINT [DF_tblDatDate_flgDay_FirstOfMonth]  DEFAULT (NULL) FOR [flgDay_FirstOfMonth]
+GO
+ALTER TABLE [dbo].[tblDatDate] ADD  CONSTRAINT [DF_tblDatDate_flgDay_FirstOfYear]  DEFAULT (NULL) FOR [flgDay_FirstOfYear]
+GO
+ALTER TABLE [dbo].[tblDatDate] ADD  CONSTRAINT [DF_tblDatDate_flgDay_LastOfWeek]  DEFAULT (NULL) FOR [flgDay_LastOfWeek]
+GO
+ALTER TABLE [dbo].[tblDatDate] ADD  CONSTRAINT [DF_tblDatDate_flgDay_LastOfMonth]  DEFAULT (NULL) FOR [flgDay_LastOfMonth]
+GO
+ALTER TABLE [dbo].[tblDatDate] ADD  CONSTRAINT [DF_tblDatDate_flgDay_LastOfYear]  DEFAULT (NULL) FOR [flgDay_LastOfYear]
+GO
+ALTER TABLE [dbo].[tblDatDate] ADD  CONSTRAINT [DF_tblDatDate_flgActive]  DEFAULT ((1)) FOR [flgActive]
+GO
+ALTER TABLE [dbo].[tblDatDate] ADD  CONSTRAINT [DF_tblDatDate_flgTrusted]  DEFAULT ((1)) FOR [flgTrusted]
+GO
+ALTER TABLE [dbo].[tblDatDate] ADD  CONSTRAINT [DF_tblDatDate_flgArchived]  DEFAULT ((0)) FOR [flgArchived]
+GO
+ALTER TABLE [dbo].[tblDatDate] ADD  CONSTRAINT [DF_tblDatDate_flgSecurity]  DEFAULT ((0)) FOR [flgSecurity]
+GO
+ALTER TABLE [dbo].[tblDatDate] ADD  CONSTRAINT [DF_tblDatDate_flgPlanned]  DEFAULT ((0)) FOR [flgPlanned]
+GO
+ALTER TABLE [dbo].[tblDatDate] ADD  CONSTRAINT [DF_tblDatDate_flgDisplay]  DEFAULT ((0)) FOR [flgDisplay]
+GO
+ALTER TABLE [dbo].[tblDatDate] ADD  CONSTRAINT [DF_tblDatDate_flgOther]  DEFAULT ((0)) FOR [flgOther]
+GO
+ALTER TABLE [dbo].[tblDatDateClass] ADD  CONSTRAINT [DF_tblDatDateClass_sysGrpGroupId_Tenant]  DEFAULT (NULL) FOR [sysGrpGroupId_Tenant]
+GO
+ALTER TABLE [dbo].[tblDatDateClass] ADD  CONSTRAINT [DF_tblDatDateClass_sysDatDateRealmId]  DEFAULT (NULL) FOR [sysDatDateRealmId]
+GO
+ALTER TABLE [dbo].[tblDatDateClass] ADD  CONSTRAINT [DF_tblDatDateClass_intSpecificDataSetNumber]  DEFAULT ((1331)) FOR [intSpecificDataSetNumber]
+GO
+ALTER TABLE [dbo].[tblDatDateClass] ADD  CONSTRAINT [DF_tblDatDateClass_strName]  DEFAULT (NULL) FOR [strName]
+GO
+ALTER TABLE [dbo].[tblDatDateClass] ADD  CONSTRAINT [DF_tblDatDateClass_strDescription]  DEFAULT (NULL) FOR [strDescription]
+GO
+ALTER TABLE [dbo].[tblDatDateClass] ADD  CONSTRAINT [DF_tblDatDateClass_strAbbreviation]  DEFAULT (NULL) FOR [strAbbreviation]
+GO
+ALTER TABLE [dbo].[tblDatDateClass] ADD  CONSTRAINT [DF_tblDatDateClass_strColumnHeader]  DEFAULT (NULL) FOR [strColumnHeader]
+GO
+ALTER TABLE [dbo].[tblDatDateClass] ADD  CONSTRAINT [DF_tblDatDateClass_strKeyName]  DEFAULT (NULL) FOR [strKeyName]
+GO
+ALTER TABLE [dbo].[tblDatDateClass] ADD  CONSTRAINT [DF_tblDatDateClass_intSequence]  DEFAULT (NULL) FOR [intSequence]
+GO
+ALTER TABLE [dbo].[tblDatDateClass] ADD  CONSTRAINT [DF_tblDatDateClass_strDisplayOrder]  DEFAULT (NULL) FOR [strDisplayOrder]
+GO
+ALTER TABLE [dbo].[tblDatDateClass] ADD  CONSTRAINT [DF_tblDatDateClass_flgCleaning]  DEFAULT ((0)) FOR [flgCleaning]
+GO
+ALTER TABLE [dbo].[tblDatDateClass] ADD  CONSTRAINT [DF_tblDatDateClass_sysDatDateClassId_CleansedTo]  DEFAULT (NULL) FOR [sysDatDateClassId_CleansedTo]
+GO
+ALTER TABLE [dbo].[tblDatDateClass] ADD  CONSTRAINT [DF_tblDatDateClass_flgActive]  DEFAULT ((1)) FOR [flgActive]
+GO
+ALTER TABLE [dbo].[tblDatDateClass] ADD  CONSTRAINT [DF_tblDatDateClass_flgTrusted]  DEFAULT ((1)) FOR [flgTrusted]
+GO
+ALTER TABLE [dbo].[tblDatDateClass] ADD  CONSTRAINT [DF_tblDatDateClass_flgArchived]  DEFAULT ((0)) FOR [flgArchived]
+GO
+ALTER TABLE [dbo].[tblDatDateClass] ADD  CONSTRAINT [DF_tblDatDateClass_flgSecurity]  DEFAULT ((0)) FOR [flgSecurity]
+GO
+ALTER TABLE [dbo].[tblDatDateClass] ADD  CONSTRAINT [DF_tblDatDateClass_flgPlanned]  DEFAULT ((0)) FOR [flgPlanned]
+GO
+ALTER TABLE [dbo].[tblDatDateClass] ADD  CONSTRAINT [DF_tblDatDateClass_flgDisplay]  DEFAULT ((0)) FOR [flgDisplay]
+GO
+ALTER TABLE [dbo].[tblDatDateClass] ADD  CONSTRAINT [DF_tblDatDateClass_flgOther]  DEFAULT ((0)) FOR [flgOther]
+GO
+ALTER TABLE [dbo].[tblDatDateFamily] ADD  CONSTRAINT [DF_tblDatDateFamily_sysGrpGroupId_Tenant]  DEFAULT (NULL) FOR [sysGrpGroupId_Tenant]
+GO
+ALTER TABLE [dbo].[tblDatDateFamily] ADD  CONSTRAINT [DF_tblDatDateFamily_sysDatDateClassId]  DEFAULT (NULL) FOR [sysDatDateClassId]
+GO
+ALTER TABLE [dbo].[tblDatDateFamily] ADD  CONSTRAINT [DF_tblDatDateFamily_intSpecificDataSetNumber]  DEFAULT ((1332)) FOR [intSpecificDataSetNumber]
+GO
+ALTER TABLE [dbo].[tblDatDateFamily] ADD  CONSTRAINT [DF_tblDatDateFamily_strName]  DEFAULT (NULL) FOR [strName]
+GO
+ALTER TABLE [dbo].[tblDatDateFamily] ADD  CONSTRAINT [DF_tblDatDateFamily_strDescription]  DEFAULT (NULL) FOR [strDescription]
+GO
+ALTER TABLE [dbo].[tblDatDateFamily] ADD  CONSTRAINT [DF_tblDatDateFamily_strAbbreviation]  DEFAULT (NULL) FOR [strAbbreviation]
+GO
+ALTER TABLE [dbo].[tblDatDateFamily] ADD  CONSTRAINT [DF_tblDatDateFamily_strColumnHeader]  DEFAULT (NULL) FOR [strColumnHeader]
+GO
+ALTER TABLE [dbo].[tblDatDateFamily] ADD  CONSTRAINT [DF_tblDatDateFamily_strKeyName]  DEFAULT (NULL) FOR [strKeyName]
+GO
+ALTER TABLE [dbo].[tblDatDateFamily] ADD  CONSTRAINT [DF_tblDatDateFamily_intSequence]  DEFAULT (NULL) FOR [intSequence]
+GO
+ALTER TABLE [dbo].[tblDatDateFamily] ADD  CONSTRAINT [DF_tblDatDateFamily_strDisplayOrder]  DEFAULT (NULL) FOR [strDisplayOrder]
+GO
+ALTER TABLE [dbo].[tblDatDateFamily] ADD  CONSTRAINT [DF_tblDatDateFamily_flgCleaning]  DEFAULT ((0)) FOR [flgCleaning]
+GO
+ALTER TABLE [dbo].[tblDatDateFamily] ADD  CONSTRAINT [DF_tblDatDateFamily_sysDatDateFamilyId_CleansedTo]  DEFAULT (NULL) FOR [sysDatDateFamilyId_CleansedTo]
+GO
+ALTER TABLE [dbo].[tblDatDateFamily] ADD  CONSTRAINT [DF_tblDatDateFamily_flgActive]  DEFAULT ((1)) FOR [flgActive]
+GO
+ALTER TABLE [dbo].[tblDatDateFamily] ADD  CONSTRAINT [DF_tblDatDateFamily_flgTrusted]  DEFAULT ((1)) FOR [flgTrusted]
+GO
+ALTER TABLE [dbo].[tblDatDateFamily] ADD  CONSTRAINT [DF_tblDatDateFamily_flgArchived]  DEFAULT ((0)) FOR [flgArchived]
+GO
+ALTER TABLE [dbo].[tblDatDateFamily] ADD  CONSTRAINT [DF_tblDatDateFamily_flgSecurity]  DEFAULT ((0)) FOR [flgSecurity]
+GO
+ALTER TABLE [dbo].[tblDatDateFamily] ADD  CONSTRAINT [DF_tblDatDateFamily_flgPlanned]  DEFAULT ((0)) FOR [flgPlanned]
+GO
+ALTER TABLE [dbo].[tblDatDateFamily] ADD  CONSTRAINT [DF_tblDatDateFamily_flgDisplay]  DEFAULT ((0)) FOR [flgDisplay]
+GO
+ALTER TABLE [dbo].[tblDatDateFamily] ADD  CONSTRAINT [DF_tblDatDateFamily_flgOther]  DEFAULT ((0)) FOR [flgOther]
+GO
+ALTER TABLE [dbo].[tblDatDateRealm] ADD  CONSTRAINT [DF_tblDatDateRealm_sysGrpGroupId_Tenant]  DEFAULT (NULL) FOR [sysGrpGroupId_Tenant]
+GO
+ALTER TABLE [dbo].[tblDatDateRealm] ADD  CONSTRAINT [DF_tblDatDateRealm_intClusterId]  DEFAULT (NULL) FOR [intClusterId]
+GO
+ALTER TABLE [dbo].[tblDatDateRealm] ADD  CONSTRAINT [DF_tblDatDateRealm_intSpecificDataSetNumber]  DEFAULT ((1333)) FOR [intSpecificDataSetNumber]
+GO
+ALTER TABLE [dbo].[tblDatDateRealm] ADD  CONSTRAINT [DF_tblDatDateRealm_strName]  DEFAULT (NULL) FOR [strName]
+GO
+ALTER TABLE [dbo].[tblDatDateRealm] ADD  CONSTRAINT [DF_tblDatDateRealm_strDescription]  DEFAULT (NULL) FOR [strDescription]
+GO
+ALTER TABLE [dbo].[tblDatDateRealm] ADD  CONSTRAINT [DF_tblDatDateRealm_strAbbreviation]  DEFAULT (NULL) FOR [strAbbreviation]
+GO
+ALTER TABLE [dbo].[tblDatDateRealm] ADD  CONSTRAINT [DF_tblDatDateRealm_strColumnHeader]  DEFAULT (NULL) FOR [strColumnHeader]
+GO
+ALTER TABLE [dbo].[tblDatDateRealm] ADD  CONSTRAINT [DF_tblDatDateRealm_strKeyName]  DEFAULT (NULL) FOR [strKeyName]
+GO
+ALTER TABLE [dbo].[tblDatDateRealm] ADD  CONSTRAINT [DF_tblDatDateRealm_intSequence]  DEFAULT (NULL) FOR [intSequence]
+GO
+ALTER TABLE [dbo].[tblDatDateRealm] ADD  CONSTRAINT [DF_tblDatDateRealm_strDisplayOrder]  DEFAULT (NULL) FOR [strDisplayOrder]
+GO
+ALTER TABLE [dbo].[tblDatDateRealm] ADD  CONSTRAINT [DF_tblDatDateRealm_flgCleaning]  DEFAULT ((0)) FOR [flgCleaning]
+GO
+ALTER TABLE [dbo].[tblDatDateRealm] ADD  CONSTRAINT [DF_tblDatDateRealm_sysDatDateRealmId_CleansedTo]  DEFAULT (NULL) FOR [sysDatDateRealmId_CleansedTo]
+GO
+ALTER TABLE [dbo].[tblDatDateRealm] ADD  CONSTRAINT [DF_tblDatDateRealm_flgActive]  DEFAULT ((1)) FOR [flgActive]
+GO
+ALTER TABLE [dbo].[tblDatDateRealm] ADD  CONSTRAINT [DF_tblDatDateRealm_flgTrusted]  DEFAULT ((1)) FOR [flgTrusted]
+GO
+ALTER TABLE [dbo].[tblDatDateRealm] ADD  CONSTRAINT [DF_tblDatDateRealm_flgArchived]  DEFAULT ((0)) FOR [flgArchived]
+GO
+ALTER TABLE [dbo].[tblDatDateRealm] ADD  CONSTRAINT [DF_tblDatDateRealm_flgSecurity]  DEFAULT ((0)) FOR [flgSecurity]
+GO
+ALTER TABLE [dbo].[tblDatDateRealm] ADD  CONSTRAINT [DF_tblDatDateRealm_flgPlanned]  DEFAULT ((0)) FOR [flgPlanned]
+GO
+ALTER TABLE [dbo].[tblDatDateRealm] ADD  CONSTRAINT [DF_tblDatDateRealm_flgDisplay]  DEFAULT ((0)) FOR [flgDisplay]
+GO
+ALTER TABLE [dbo].[tblDatDateRealm] ADD  CONSTRAINT [DF_tblDatDateRealm_flgOther]  DEFAULT ((0)) FOR [flgOther]
+GO
+ALTER TABLE [dbo].[tblDatDateSequence] ADD  CONSTRAINT [DF_tblDatDateSequence_sysGrpGroupId_Tenant]  DEFAULT (NULL) FOR [sysGrpGroupId_Tenant]
+GO
+ALTER TABLE [dbo].[tblDatDateSequence] ADD  CONSTRAINT [DF_tblDatDateSequence_sysDatDateSequenceTypeId]  DEFAULT (NULL) FOR [sysDatDateSequenceTypeId]
+GO
+ALTER TABLE [dbo].[tblDatDateSequence] ADD  CONSTRAINT [DF_tblDatDateSequence_intSpecificDataSetNumber]  DEFAULT ((1334)) FOR [intSpecificDataSetNumber]
+GO
+ALTER TABLE [dbo].[tblDatDateSequence] ADD  CONSTRAINT [DF_tblDatDateSequence_sysDatDateId_Begin]  DEFAULT (NULL) FOR [sysDatDateId_Begin]
+GO
+ALTER TABLE [dbo].[tblDatDateSequence] ADD  CONSTRAINT [DF_tblDatDateSequence_sysDatDateId_End]  DEFAULT (NULL) FOR [sysDatDateId_End]
+GO
+ALTER TABLE [dbo].[tblDatDateSequence] ADD  CONSTRAINT [DF_tblDatDateSequence_flgActive]  DEFAULT ((1)) FOR [flgActive]
+GO
+ALTER TABLE [dbo].[tblDatDateSequence] ADD  CONSTRAINT [DF_tblDatDateSequence_flgTrusted]  DEFAULT ((1)) FOR [flgTrusted]
+GO
+ALTER TABLE [dbo].[tblDatDateSequence] ADD  CONSTRAINT [DF_tblDatDateSequence_flgArchived]  DEFAULT ((0)) FOR [flgArchived]
+GO
+ALTER TABLE [dbo].[tblDatDateSequence] ADD  CONSTRAINT [DF_tblDatDateSequence_flgSecurity]  DEFAULT ((0)) FOR [flgSecurity]
+GO
+ALTER TABLE [dbo].[tblDatDateSequence] ADD  CONSTRAINT [DF_tblDatDateSequence_flgPlanned]  DEFAULT ((0)) FOR [flgPlanned]
+GO
+ALTER TABLE [dbo].[tblDatDateSequence] ADD  CONSTRAINT [DF_tblDatDateSequence_flgDisplay]  DEFAULT ((0)) FOR [flgDisplay]
+GO
+ALTER TABLE [dbo].[tblDatDateSequence] ADD  CONSTRAINT [DF_tblDatDateSequence_flgOther]  DEFAULT ((0)) FOR [flgOther]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceClass] ADD  CONSTRAINT [DF_tblDatDateSequenceClass_sysGrpGroupId_Tenant]  DEFAULT (NULL) FOR [sysGrpGroupId_Tenant]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceClass] ADD  CONSTRAINT [DF_tblDatDateSequenceClass_sysDatDateSequenceRealmId]  DEFAULT (NULL) FOR [sysDatDateSequenceRealmId]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceClass] ADD  CONSTRAINT [DF_tblDatDateSequenceClass_intSpecificDataSetNumber]  DEFAULT ((1335)) FOR [intSpecificDataSetNumber]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceClass] ADD  CONSTRAINT [DF_tblDatDateSequenceClass_strName]  DEFAULT (NULL) FOR [strName]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceClass] ADD  CONSTRAINT [DF_tblDatDateSequenceClass_strDescription]  DEFAULT (NULL) FOR [strDescription]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceClass] ADD  CONSTRAINT [DF_tblDatDateSequenceClass_strAbbreviation]  DEFAULT (NULL) FOR [strAbbreviation]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceClass] ADD  CONSTRAINT [DF_tblDatDateSequenceClass_strColumnHeader]  DEFAULT (NULL) FOR [strColumnHeader]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceClass] ADD  CONSTRAINT [DF_tblDatDateSequenceClass_strKeyName]  DEFAULT (NULL) FOR [strKeyName]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceClass] ADD  CONSTRAINT [DF_tblDatDateSequenceClass_intSequence]  DEFAULT (NULL) FOR [intSequence]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceClass] ADD  CONSTRAINT [DF_tblDatDateSequenceClass_strDisplayOrder]  DEFAULT (NULL) FOR [strDisplayOrder]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceClass] ADD  CONSTRAINT [DF_tblDatDateSequenceClass_flgCleaning]  DEFAULT ((0)) FOR [flgCleaning]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceClass] ADD  CONSTRAINT [DF_tblDatDateSequenceClass_sysDatDateSequenceClassId_CleansedTo]  DEFAULT (NULL) FOR [sysDatDateSequenceClassId_CleansedTo]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceClass] ADD  CONSTRAINT [DF_tblDatDateSequenceClass_flgActive]  DEFAULT ((1)) FOR [flgActive]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceClass] ADD  CONSTRAINT [DF_tblDatDateSequenceClass_flgTrusted]  DEFAULT ((1)) FOR [flgTrusted]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceClass] ADD  CONSTRAINT [DF_tblDatDateSequenceClass_flgArchived]  DEFAULT ((0)) FOR [flgArchived]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceClass] ADD  CONSTRAINT [DF_tblDatDateSequenceClass_flgSecurity]  DEFAULT ((0)) FOR [flgSecurity]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceClass] ADD  CONSTRAINT [DF_tblDatDateSequenceClass_flgPlanned]  DEFAULT ((0)) FOR [flgPlanned]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceClass] ADD  CONSTRAINT [DF_tblDatDateSequenceClass_flgDisplay]  DEFAULT ((0)) FOR [flgDisplay]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceClass] ADD  CONSTRAINT [DF_tblDatDateSequenceClass_flgOther]  DEFAULT ((0)) FOR [flgOther]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceFamily] ADD  CONSTRAINT [DF_tblDatDateSequenceFamily_sysGrpGroupId_Tenant]  DEFAULT (NULL) FOR [sysGrpGroupId_Tenant]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceFamily] ADD  CONSTRAINT [DF_tblDatDateSequenceFamily_sysDatDateSequenceClassId]  DEFAULT (NULL) FOR [sysDatDateSequenceClassId]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceFamily] ADD  CONSTRAINT [DF_tblDatDateSequenceFamily_intSpecificDataSetNumber]  DEFAULT ((1336)) FOR [intSpecificDataSetNumber]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceFamily] ADD  CONSTRAINT [DF_tblDatDateSequenceFamily_strName]  DEFAULT (NULL) FOR [strName]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceFamily] ADD  CONSTRAINT [DF_tblDatDateSequenceFamily_strDescription]  DEFAULT (NULL) FOR [strDescription]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceFamily] ADD  CONSTRAINT [DF_tblDatDateSequenceFamily_strAbbreviation]  DEFAULT (NULL) FOR [strAbbreviation]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceFamily] ADD  CONSTRAINT [DF_tblDatDateSequenceFamily_strColumnHeader]  DEFAULT (NULL) FOR [strColumnHeader]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceFamily] ADD  CONSTRAINT [DF_tblDatDateSequenceFamily_strKeyName]  DEFAULT (NULL) FOR [strKeyName]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceFamily] ADD  CONSTRAINT [DF_tblDatDateSequenceFamily_intSequence]  DEFAULT (NULL) FOR [intSequence]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceFamily] ADD  CONSTRAINT [DF_tblDatDateSequenceFamily_strDisplayOrder]  DEFAULT (NULL) FOR [strDisplayOrder]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceFamily] ADD  CONSTRAINT [DF_tblDatDateSequenceFamily_flgCleaning]  DEFAULT ((0)) FOR [flgCleaning]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceFamily] ADD  CONSTRAINT [DF_tblDatDateSequenceFamily_sysDatDateSequenceFamilyId_CleansedTo]  DEFAULT (NULL) FOR [sysDatDateSequenceFamilyId_CleansedTo]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceFamily] ADD  CONSTRAINT [DF_tblDatDateSequenceFamily_flgActive]  DEFAULT ((1)) FOR [flgActive]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceFamily] ADD  CONSTRAINT [DF_tblDatDateSequenceFamily_flgTrusted]  DEFAULT ((1)) FOR [flgTrusted]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceFamily] ADD  CONSTRAINT [DF_tblDatDateSequenceFamily_flgArchived]  DEFAULT ((0)) FOR [flgArchived]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceFamily] ADD  CONSTRAINT [DF_tblDatDateSequenceFamily_flgSecurity]  DEFAULT ((0)) FOR [flgSecurity]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceFamily] ADD  CONSTRAINT [DF_tblDatDateSequenceFamily_flgPlanned]  DEFAULT ((0)) FOR [flgPlanned]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceFamily] ADD  CONSTRAINT [DF_tblDatDateSequenceFamily_flgDisplay]  DEFAULT ((0)) FOR [flgDisplay]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceFamily] ADD  CONSTRAINT [DF_tblDatDateSequenceFamily_flgOther]  DEFAULT ((0)) FOR [flgOther]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceRealm] ADD  CONSTRAINT [DF_tblDatDateSequenceRealm_sysGrpGroupId_Tenant]  DEFAULT (NULL) FOR [sysGrpGroupId_Tenant]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceRealm] ADD  CONSTRAINT [DF_tblDatDateSequenceRealm_intClusterId]  DEFAULT (NULL) FOR [intClusterId]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceRealm] ADD  CONSTRAINT [DF_tblDatDateSequenceRealm_intSpecificDataSetNumber]  DEFAULT ((1323)) FOR [intSpecificDataSetNumber]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceRealm] ADD  CONSTRAINT [DF_tblDatDateSequenceRealm_strName]  DEFAULT (NULL) FOR [strName]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceRealm] ADD  CONSTRAINT [DF_tblDatDateSequenceRealm_strDescription]  DEFAULT (NULL) FOR [strDescription]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceRealm] ADD  CONSTRAINT [DF_tblDatDateSequenceRealm_strAbbreviation]  DEFAULT (NULL) FOR [strAbbreviation]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceRealm] ADD  CONSTRAINT [DF_tblDatDateSequenceRealm_strColumnHeader]  DEFAULT (NULL) FOR [strColumnHeader]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceRealm] ADD  CONSTRAINT [DF_tblDatDateSequenceRealm_strKeyName]  DEFAULT (NULL) FOR [strKeyName]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceRealm] ADD  CONSTRAINT [DF_tblDatDateSequenceRealm_intSequence]  DEFAULT (NULL) FOR [intSequence]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceRealm] ADD  CONSTRAINT [DF_tblDatDateSequenceRealm_strDisplayOrder]  DEFAULT (NULL) FOR [strDisplayOrder]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceRealm] ADD  CONSTRAINT [DF_tblDatDateSequenceRealm_flgCleaning]  DEFAULT ((0)) FOR [flgCleaning]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceRealm] ADD  CONSTRAINT [DF_tblDatDateSequenceRealm_sysDatDateSequenceRealmId_CleansedTo]  DEFAULT (NULL) FOR [sysDatDateSequenceRealmId_CleansedTo]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceRealm] ADD  CONSTRAINT [DF_tblDatDateSequenceRealm_flgActive]  DEFAULT ((1)) FOR [flgActive]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceRealm] ADD  CONSTRAINT [DF_tblDatDateSequenceRealm_flgTrusted]  DEFAULT ((1)) FOR [flgTrusted]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceRealm] ADD  CONSTRAINT [DF_tblDatDateSequenceRealm_flgArchived]  DEFAULT ((0)) FOR [flgArchived]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceRealm] ADD  CONSTRAINT [DF_tblDatDateSequenceRealm_flgSecurity]  DEFAULT ((0)) FOR [flgSecurity]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceRealm] ADD  CONSTRAINT [DF_tblDatDateSequenceRealm_flgPlanned]  DEFAULT ((0)) FOR [flgPlanned]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceRealm] ADD  CONSTRAINT [DF_tblDatDateSequenceRealm_flgDisplay]  DEFAULT ((0)) FOR [flgDisplay]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceRealm] ADD  CONSTRAINT [DF_tblDatDateSequenceRealm_flgOther]  DEFAULT ((0)) FOR [flgOther]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceType] ADD  CONSTRAINT [DF_tblDatDateSequenceType_sysGrpGroupId_Tenant]  DEFAULT (NULL) FOR [sysGrpGroupId_Tenant]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceType] ADD  CONSTRAINT [DF_tblDatDateSequenceType_sysDatDateSequenceFamilyId]  DEFAULT (NULL) FOR [sysDatDateSequenceFamilyId]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceType] ADD  CONSTRAINT [DF_tblDatDateSequenceType_intSpecificDataSetNumber]  DEFAULT ((1324)) FOR [intSpecificDataSetNumber]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceType] ADD  CONSTRAINT [DF_tblDatDateSequenceType_strName]  DEFAULT (NULL) FOR [strName]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceType] ADD  CONSTRAINT [DF_tblDatDateSequenceType_strDescription]  DEFAULT (NULL) FOR [strDescription]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceType] ADD  CONSTRAINT [DF_tblDatDateSequenceType_strAbbreviation]  DEFAULT (NULL) FOR [strAbbreviation]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceType] ADD  CONSTRAINT [DF_tblDatDateSequenceType_strColumnHeader]  DEFAULT (NULL) FOR [strColumnHeader]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceType] ADD  CONSTRAINT [DF_tblDatDateSequenceType_strKeyName]  DEFAULT (NULL) FOR [strKeyName]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceType] ADD  CONSTRAINT [DF_tblDatDateSequenceType_intSequence]  DEFAULT (NULL) FOR [intSequence]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceType] ADD  CONSTRAINT [DF_tblDatDateSequenceType_strDisplayOrder]  DEFAULT (NULL) FOR [strDisplayOrder]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceType] ADD  CONSTRAINT [DF_tblDatDateSequenceType_flgCleaning]  DEFAULT ((0)) FOR [flgCleaning]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceType] ADD  CONSTRAINT [DF_tblDatDateSequenceType_sysDatDateSequenceTypeId_CleansedTo]  DEFAULT (NULL) FOR [sysDatDateSequenceTypeId_CleansedTo]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceType] ADD  CONSTRAINT [DF_tblDatDateSequenceType_flgActive]  DEFAULT ((1)) FOR [flgActive]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceType] ADD  CONSTRAINT [DF_tblDatDateSequenceType_flgTrusted]  DEFAULT ((1)) FOR [flgTrusted]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceType] ADD  CONSTRAINT [DF_tblDatDateSequenceType_flgArchived]  DEFAULT ((0)) FOR [flgArchived]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceType] ADD  CONSTRAINT [DF_tblDatDateSequenceType_flgSecurity]  DEFAULT ((0)) FOR [flgSecurity]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceType] ADD  CONSTRAINT [DF_tblDatDateSequenceType_flgPlanned]  DEFAULT ((0)) FOR [flgPlanned]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceType] ADD  CONSTRAINT [DF_tblDatDateSequenceType_flgDisplay]  DEFAULT ((0)) FOR [flgDisplay]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceType] ADD  CONSTRAINT [DF_tblDatDateSequenceType_flgOther]  DEFAULT ((0)) FOR [flgOther]
+GO
+ALTER TABLE [dbo].[tblDatDateType] ADD  CONSTRAINT [DF_tblDatDateType_sysGrpGroupId_Tenant]  DEFAULT (NULL) FOR [sysGrpGroupId_Tenant]
+GO
+ALTER TABLE [dbo].[tblDatDateType] ADD  CONSTRAINT [DF_tblDatDateType_sysDatDateFamilyId]  DEFAULT (NULL) FOR [sysDatDateFamilyId]
+GO
+ALTER TABLE [dbo].[tblDatDateType] ADD  CONSTRAINT [DF_tblDatDateType_intSpecificDataSetNumber]  DEFAULT ((1326)) FOR [intSpecificDataSetNumber]
+GO
+ALTER TABLE [dbo].[tblDatDateType] ADD  CONSTRAINT [DF_tblDatDateType_strName]  DEFAULT (NULL) FOR [strName]
+GO
+ALTER TABLE [dbo].[tblDatDateType] ADD  CONSTRAINT [DF_tblDatDateType_strDescription]  DEFAULT (NULL) FOR [strDescription]
+GO
+ALTER TABLE [dbo].[tblDatDateType] ADD  CONSTRAINT [DF_tblDatDateType_strAbbreviation]  DEFAULT (NULL) FOR [strAbbreviation]
+GO
+ALTER TABLE [dbo].[tblDatDateType] ADD  CONSTRAINT [DF_tblDatDateType_strColumnHeader]  DEFAULT (NULL) FOR [strColumnHeader]
+GO
+ALTER TABLE [dbo].[tblDatDateType] ADD  CONSTRAINT [DF_tblDatDateType_strKeyName]  DEFAULT (NULL) FOR [strKeyName]
+GO
+ALTER TABLE [dbo].[tblDatDateType] ADD  CONSTRAINT [DF_tblDatDateType_intSequence]  DEFAULT (NULL) FOR [intSequence]
+GO
+ALTER TABLE [dbo].[tblDatDateType] ADD  CONSTRAINT [DF_tblDatDateType_strDisplayOrder]  DEFAULT (NULL) FOR [strDisplayOrder]
+GO
+ALTER TABLE [dbo].[tblDatDateType] ADD  CONSTRAINT [DF_tblDatDateType_flgCleaning]  DEFAULT ((0)) FOR [flgCleaning]
+GO
+ALTER TABLE [dbo].[tblDatDateType] ADD  CONSTRAINT [DF_tblDatDateType_sysDatDateTypeId_CleansedTo]  DEFAULT (NULL) FOR [sysDatDateTypeId_CleansedTo]
+GO
+ALTER TABLE [dbo].[tblDatDateType] ADD  CONSTRAINT [DF_tblDatDateType_flgActive]  DEFAULT ((1)) FOR [flgActive]
+GO
+ALTER TABLE [dbo].[tblDatDateType] ADD  CONSTRAINT [DF_tblDatDateType_flgTrusted]  DEFAULT ((1)) FOR [flgTrusted]
+GO
+ALTER TABLE [dbo].[tblDatDateType] ADD  CONSTRAINT [DF_tblDatDateType_flgArchived]  DEFAULT ((0)) FOR [flgArchived]
+GO
+ALTER TABLE [dbo].[tblDatDateType] ADD  CONSTRAINT [DF_tblDatDateType_flgSecurity]  DEFAULT ((0)) FOR [flgSecurity]
+GO
+ALTER TABLE [dbo].[tblDatDateType] ADD  CONSTRAINT [DF_tblDatDateType_flgPlanned]  DEFAULT ((0)) FOR [flgPlanned]
+GO
+ALTER TABLE [dbo].[tblDatDateType] ADD  CONSTRAINT [DF_tblDatDateType_flgDisplay]  DEFAULT ((0)) FOR [flgDisplay]
+GO
+ALTER TABLE [dbo].[tblDatDateType] ADD  CONSTRAINT [DF_tblDatDateType_flgOther]  DEFAULT ((0)) FOR [flgOther]
+GO
+ALTER TABLE [dbo].[tblDatDayOfWeek] ADD  CONSTRAINT [DF_tblDatDayOfWeek_sysGrpGroupId_Tenant]  DEFAULT (NULL) FOR [sysGrpGroupId_Tenant]
+GO
+ALTER TABLE [dbo].[tblDatDayOfWeek] ADD  CONSTRAINT [DF_tblDatDayOfWeek_intSpecificDataSetNumber]  DEFAULT ((1327)) FOR [intSpecificDataSetNumber]
+GO
+ALTER TABLE [dbo].[tblDatDayOfWeek] ADD  CONSTRAINT [DF_tblDatDayOfWeek_strName]  DEFAULT (NULL) FOR [strName]
+GO
+ALTER TABLE [dbo].[tblDatDayOfWeek] ADD  CONSTRAINT [DF_tblDatDayOfWeek_strDescription]  DEFAULT (NULL) FOR [strDescription]
+GO
+ALTER TABLE [dbo].[tblDatDayOfWeek] ADD  CONSTRAINT [DF_tblDatDayOfWeek_strAbbreviation]  DEFAULT (NULL) FOR [strAbbreviation]
+GO
+ALTER TABLE [dbo].[tblDatDayOfWeek] ADD  CONSTRAINT [DF_tblDatDayOfWeek_strColumnHeader]  DEFAULT (NULL) FOR [strColumnHeader]
+GO
+ALTER TABLE [dbo].[tblDatDayOfWeek] ADD  CONSTRAINT [DF_tblDatDayOfWeek_strKeyName]  DEFAULT (NULL) FOR [strKeyName]
+GO
+ALTER TABLE [dbo].[tblDatDayOfWeek] ADD  CONSTRAINT [DF_tblDatDayOfWeek_intSequence]  DEFAULT (NULL) FOR [intSequence]
+GO
+ALTER TABLE [dbo].[tblDatDayOfWeek] ADD  CONSTRAINT [DF_tblDatDayOfWeek_strFormat_02Code]  DEFAULT (NULL) FOR [strFormat_02Code]
+GO
+ALTER TABLE [dbo].[tblDatDayOfWeek] ADD  CONSTRAINT [DF_tblDatDayOfWeek_flgDay_IsWeekday]  DEFAULT (NULL) FOR [flgDay_IsWeekday]
+GO
+ALTER TABLE [dbo].[tblDatDayOfWeek] ADD  CONSTRAINT [DF_tblDatDayOfWeek_strDisplayOrder]  DEFAULT (NULL) FOR [strDisplayOrder]
+GO
+ALTER TABLE [dbo].[tblDatDayOfWeek] ADD  CONSTRAINT [DF_tblDatDayOfWeek_flgCleaning]  DEFAULT ((0)) FOR [flgCleaning]
+GO
+ALTER TABLE [dbo].[tblDatDayOfWeek] ADD  CONSTRAINT [DF_tblDatDayOfWeek_sysDatDayOfWeekId_CleansedTo]  DEFAULT (NULL) FOR [sysDatDayOfWeekId_CleansedTo]
+GO
+ALTER TABLE [dbo].[tblDatDayOfWeek] ADD  CONSTRAINT [DF_tblDatDayOfWeek_flgActive]  DEFAULT ((1)) FOR [flgActive]
+GO
+ALTER TABLE [dbo].[tblDatDayOfWeek] ADD  CONSTRAINT [DF_tblDatDayOfWeek_flgTrusted]  DEFAULT ((1)) FOR [flgTrusted]
+GO
+ALTER TABLE [dbo].[tblDatDayOfWeek] ADD  CONSTRAINT [DF_tblDatDayOfWeek_flgArchived]  DEFAULT ((0)) FOR [flgArchived]
+GO
+ALTER TABLE [dbo].[tblDatDayOfWeek] ADD  CONSTRAINT [DF_tblDatDayOfWeek_flgSecurity]  DEFAULT ((0)) FOR [flgSecurity]
+GO
+ALTER TABLE [dbo].[tblDatDayOfWeek] ADD  CONSTRAINT [DF_tblDatDayOfWeek_flgPlanned]  DEFAULT ((0)) FOR [flgPlanned]
+GO
+ALTER TABLE [dbo].[tblDatDayOfWeek] ADD  CONSTRAINT [DF_tblDatDayOfWeek_flgDisplay]  DEFAULT ((0)) FOR [flgDisplay]
+GO
+ALTER TABLE [dbo].[tblDatDayOfWeek] ADD  CONSTRAINT [DF_tblDatDayOfWeek_flgOther]  DEFAULT ((0)) FOR [flgOther]
+GO
+ALTER TABLE [dbo].[tblDatMonth] ADD  CONSTRAINT [DF_tblDatMonth_sysGrpGroupId_Tenant]  DEFAULT (NULL) FOR [sysGrpGroupId_Tenant]
+GO
+ALTER TABLE [dbo].[tblDatMonth] ADD  CONSTRAINT [DF_tblDatMonth_intSpecificDataSetNumber]  DEFAULT ((1328)) FOR [intSpecificDataSetNumber]
+GO
+ALTER TABLE [dbo].[tblDatMonth] ADD  CONSTRAINT [DF_tblDatMonth_strName]  DEFAULT (NULL) FOR [strName]
+GO
+ALTER TABLE [dbo].[tblDatMonth] ADD  CONSTRAINT [DF_tblDatMonth_strDescription]  DEFAULT (NULL) FOR [strDescription]
+GO
+ALTER TABLE [dbo].[tblDatMonth] ADD  CONSTRAINT [DF_tblDatMonth_strAbbreviation]  DEFAULT (NULL) FOR [strAbbreviation]
+GO
+ALTER TABLE [dbo].[tblDatMonth] ADD  CONSTRAINT [DF_tblDatMonth_strColumnHeader]  DEFAULT (NULL) FOR [strColumnHeader]
+GO
+ALTER TABLE [dbo].[tblDatMonth] ADD  CONSTRAINT [DF_tblDatMonth_strKeyName]  DEFAULT (NULL) FOR [strKeyName]
+GO
+ALTER TABLE [dbo].[tblDatMonth] ADD  CONSTRAINT [DF_tblDatMonth_intSequence]  DEFAULT (NULL) FOR [intSequence]
+GO
+ALTER TABLE [dbo].[tblDatMonth] ADD  CONSTRAINT [DF_tblDatMonth_strDisplayOrder]  DEFAULT (NULL) FOR [strDisplayOrder]
+GO
+ALTER TABLE [dbo].[tblDatMonth] ADD  CONSTRAINT [DF_tblDatMonth_flgCleaning]  DEFAULT ((0)) FOR [flgCleaning]
+GO
+ALTER TABLE [dbo].[tblDatMonth] ADD  CONSTRAINT [DF_tblDatMonth_sysDatMonthId_CleansedTo]  DEFAULT (NULL) FOR [sysDatMonthId_CleansedTo]
+GO
+ALTER TABLE [dbo].[tblDatMonth] ADD  CONSTRAINT [DF_tblDatMonth_flgActive]  DEFAULT ((1)) FOR [flgActive]
+GO
+ALTER TABLE [dbo].[tblDatMonth] ADD  CONSTRAINT [DF_tblDatMonth_flgTrusted]  DEFAULT ((1)) FOR [flgTrusted]
+GO
+ALTER TABLE [dbo].[tblDatMonth] ADD  CONSTRAINT [DF_tblDatMonth_flgArchived]  DEFAULT ((0)) FOR [flgArchived]
+GO
+ALTER TABLE [dbo].[tblDatMonth] ADD  CONSTRAINT [DF_tblDatMonth_flgSecurity]  DEFAULT ((0)) FOR [flgSecurity]
+GO
+ALTER TABLE [dbo].[tblDatMonth] ADD  CONSTRAINT [DF_tblDatMonth_flgPlanned]  DEFAULT ((0)) FOR [flgPlanned]
+GO
+ALTER TABLE [dbo].[tblDatMonth] ADD  CONSTRAINT [DF_tblDatMonth_flgDisplay]  DEFAULT ((0)) FOR [flgDisplay]
+GO
+ALTER TABLE [dbo].[tblDatMonth] ADD  CONSTRAINT [DF_tblDatMonth_flgOther]  DEFAULT ((0)) FOR [flgOther]
+GO
+ALTER TABLE [dbo].[tblDatYear] ADD  CONSTRAINT [DF_tblDatYear_sysGrpGroupId_Tenant]  DEFAULT (NULL) FOR [sysGrpGroupId_Tenant]
+GO
+ALTER TABLE [dbo].[tblDatYear] ADD  CONSTRAINT [DF_tblDatYear_intSpecificDataSetNumber]  DEFAULT ((1329)) FOR [intSpecificDataSetNumber]
+GO
+ALTER TABLE [dbo].[tblDatYear] ADD  CONSTRAINT [DF_tblDatYear_strName]  DEFAULT (NULL) FOR [strName]
+GO
+ALTER TABLE [dbo].[tblDatYear] ADD  CONSTRAINT [DF_tblDatYear_strDescription]  DEFAULT (NULL) FOR [strDescription]
+GO
+ALTER TABLE [dbo].[tblDatYear] ADD  CONSTRAINT [DF_tblDatYear_strAbbreviation]  DEFAULT (NULL) FOR [strAbbreviation]
+GO
+ALTER TABLE [dbo].[tblDatYear] ADD  CONSTRAINT [DF_tblDatYear_strColumnHeader]  DEFAULT (NULL) FOR [strColumnHeader]
+GO
+ALTER TABLE [dbo].[tblDatYear] ADD  CONSTRAINT [DF_tblDatYear_strKeyName]  DEFAULT (NULL) FOR [strKeyName]
+GO
+ALTER TABLE [dbo].[tblDatYear] ADD  CONSTRAINT [DF_tblDatYear_intSequence]  DEFAULT (NULL) FOR [intSequence]
+GO
+ALTER TABLE [dbo].[tblDatYear] ADD  CONSTRAINT [DF_tblDatYear_strDisplayOrder]  DEFAULT (NULL) FOR [strDisplayOrder]
+GO
+ALTER TABLE [dbo].[tblDatYear] ADD  CONSTRAINT [DF_tblDatYear_flgCleaning]  DEFAULT ((0)) FOR [flgCleaning]
+GO
+ALTER TABLE [dbo].[tblDatYear] ADD  CONSTRAINT [DF_tblDatYear_sysDatYearId_CleansedTo]  DEFAULT (NULL) FOR [sysDatYearId_CleansedTo]
+GO
+ALTER TABLE [dbo].[tblDatYear] ADD  CONSTRAINT [DF_tblDatYear_flgActive]  DEFAULT ((1)) FOR [flgActive]
+GO
+ALTER TABLE [dbo].[tblDatYear] ADD  CONSTRAINT [DF_tblDatYear_flgTrusted]  DEFAULT ((1)) FOR [flgTrusted]
+GO
+ALTER TABLE [dbo].[tblDatYear] ADD  CONSTRAINT [DF_tblDatYear_flgArchived]  DEFAULT ((0)) FOR [flgArchived]
+GO
+ALTER TABLE [dbo].[tblDatYear] ADD  CONSTRAINT [DF_tblDatYear_flgSecurity]  DEFAULT ((0)) FOR [flgSecurity]
+GO
+ALTER TABLE [dbo].[tblDatYear] ADD  CONSTRAINT [DF_tblDatYear_flgPlanned]  DEFAULT ((0)) FOR [flgPlanned]
+GO
+ALTER TABLE [dbo].[tblDatYear] ADD  CONSTRAINT [DF_tblDatYear_flgDisplay]  DEFAULT ((0)) FOR [flgDisplay]
+GO
+ALTER TABLE [dbo].[tblDatYear] ADD  CONSTRAINT [DF_tblDatYear_flgOther]  DEFAULT ((0)) FOR [flgOther]
+GO
+ALTER TABLE [dbo].[tblDatYearMonth] ADD  CONSTRAINT [DF_tblDatYearMonth_sysGrpGroupId_Tenant]  DEFAULT (NULL) FOR [sysGrpGroupId_Tenant]
+GO
+ALTER TABLE [dbo].[tblDatYearMonth] ADD  CONSTRAINT [DF_tblDatYearMonth_intSpecificDataSetNumber]  DEFAULT ((1330)) FOR [intSpecificDataSetNumber]
+GO
+ALTER TABLE [dbo].[tblDatYearMonth] ADD  CONSTRAINT [DF_tblDatYearMonth_sysDatMonthId]  DEFAULT (NULL) FOR [sysDatMonthId]
+GO
+ALTER TABLE [dbo].[tblDatYearMonth] ADD  CONSTRAINT [DF_tblDatYearMonth_sysDatYearId]  DEFAULT (NULL) FOR [sysDatYearId]
+GO
+ALTER TABLE [dbo].[tblDatYearMonth] ADD  CONSTRAINT [DF_tblDatYearMonth_strFormat_MMxYYYY]  DEFAULT (NULL) FOR [strFormat_MMxYYYY]
+GO
+ALTER TABLE [dbo].[tblDatYearMonth] ADD  CONSTRAINT [DF_tblDatYearMonth_strFormat_MonxYYYY]  DEFAULT (NULL) FOR [strFormat_MonxYYYY]
+GO
+ALTER TABLE [dbo].[tblDatYearMonth] ADD  CONSTRAINT [DF_tblDatYearMonth_strFormat_YYYYxMM]  DEFAULT (NULL) FOR [strFormat_YYYYxMM]
+GO
+ALTER TABLE [dbo].[tblDatYearMonth] ADD  CONSTRAINT [DF_tblDatYearMonth_strFormat_YYYYxMon]  DEFAULT (NULL) FOR [strFormat_YYYYxMon]
+GO
+ALTER TABLE [dbo].[tblDatYearMonth] ADD  CONSTRAINT [DF_tblDatYearMonth_strDisplayOrder]  DEFAULT (NULL) FOR [strDisplayOrder]
+GO
+ALTER TABLE [dbo].[tblDatYearMonth] ADD  CONSTRAINT [DF_tblDatYearMonth_flgCleaning]  DEFAULT ((0)) FOR [flgCleaning]
+GO
+ALTER TABLE [dbo].[tblDatYearMonth] ADD  CONSTRAINT [DF_tblDatYearMonth_sysDatYearMonthId_CleansedTo]  DEFAULT (NULL) FOR [sysDatYearMonthId_CleansedTo]
+GO
+ALTER TABLE [dbo].[tblDatYearMonth] ADD  CONSTRAINT [DF_tblDatYearMonth_flgActive]  DEFAULT ((1)) FOR [flgActive]
+GO
+ALTER TABLE [dbo].[tblDatYearMonth] ADD  CONSTRAINT [DF_tblDatYearMonth_flgTrusted]  DEFAULT ((1)) FOR [flgTrusted]
+GO
+ALTER TABLE [dbo].[tblDatYearMonth] ADD  CONSTRAINT [DF_tblDatYearMonth_flgArchived]  DEFAULT ((0)) FOR [flgArchived]
+GO
+ALTER TABLE [dbo].[tblDatYearMonth] ADD  CONSTRAINT [DF_tblDatYearMonth_flgSecurity]  DEFAULT ((0)) FOR [flgSecurity]
+GO
+ALTER TABLE [dbo].[tblDatYearMonth] ADD  CONSTRAINT [DF_tblDatYearMonth_flgPlanned]  DEFAULT ((0)) FOR [flgPlanned]
+GO
+ALTER TABLE [dbo].[tblDatYearMonth] ADD  CONSTRAINT [DF_tblDatYearMonth_flgDisplay]  DEFAULT ((0)) FOR [flgDisplay]
+GO
+ALTER TABLE [dbo].[tblDatYearMonth] ADD  CONSTRAINT [DF_tblDatYearMonth_flgOther]  DEFAULT ((0)) FOR [flgOther]
+GO
+ALTER TABLE [dbo].[tblDatDate]  WITH CHECK ADD  CONSTRAINT [FK_tblDatDate_tblDatDateType] FOREIGN KEY([sysDatDateTypeId])
+REFERENCES [dbo].[tblDatDateType] ([sysDatDateTypeId])
+GO
+ALTER TABLE [dbo].[tblDatDate] CHECK CONSTRAINT [FK_tblDatDate_tblDatDateType]
+GO
+ALTER TABLE [dbo].[tblDatDate]  WITH CHECK ADD  CONSTRAINT [FK_tblDatDate_tblDatDayOfWeek] FOREIGN KEY([sysDatDayOfWeekId])
+REFERENCES [dbo].[tblDatDayOfWeek] ([sysDatDayOfWeekId])
+GO
+ALTER TABLE [dbo].[tblDatDate] CHECK CONSTRAINT [FK_tblDatDate_tblDatDayOfWeek]
+GO
+ALTER TABLE [dbo].[tblDatDate]  WITH CHECK ADD  CONSTRAINT [FK_tblDatDate_tblDatYearMonth] FOREIGN KEY([sysDatYearMonthId])
+REFERENCES [dbo].[tblDatYearMonth] ([sysDatYearMonthId])
+GO
+ALTER TABLE [dbo].[tblDatDate] CHECK CONSTRAINT [FK_tblDatDate_tblDatYearMonth]
+GO
+ALTER TABLE [dbo].[tblDatDateClass]  WITH CHECK ADD  CONSTRAINT [FK_tblDatDateClass_tblDatDateClass] FOREIGN KEY([sysDatDateClassId_CleansedTo])
+REFERENCES [dbo].[tblDatDateClass] ([sysDatDateClassId])
+GO
+ALTER TABLE [dbo].[tblDatDateClass] CHECK CONSTRAINT [FK_tblDatDateClass_tblDatDateClass]
+GO
+ALTER TABLE [dbo].[tblDatDateClass]  WITH CHECK ADD  CONSTRAINT [FK_tblDatDateClass_tblDatDateRealm] FOREIGN KEY([sysDatDateRealmId])
+REFERENCES [dbo].[tblDatDateRealm] ([sysDatDateRealmId])
+GO
+ALTER TABLE [dbo].[tblDatDateClass] CHECK CONSTRAINT [FK_tblDatDateClass_tblDatDateRealm]
+GO
+ALTER TABLE [dbo].[tblDatDateFamily]  WITH CHECK ADD  CONSTRAINT [FK_tblDatDateFamily_tblDatDateClass] FOREIGN KEY([sysDatDateClassId])
+REFERENCES [dbo].[tblDatDateClass] ([sysDatDateClassId])
+GO
+ALTER TABLE [dbo].[tblDatDateFamily] CHECK CONSTRAINT [FK_tblDatDateFamily_tblDatDateClass]
+GO
+ALTER TABLE [dbo].[tblDatDateFamily]  WITH CHECK ADD  CONSTRAINT [FK_tblDatDateFamily_tblDatDateFamily] FOREIGN KEY([sysDatDateFamilyId_CleansedTo])
+REFERENCES [dbo].[tblDatDateFamily] ([sysDatDateFamilyId])
+GO
+ALTER TABLE [dbo].[tblDatDateFamily] CHECK CONSTRAINT [FK_tblDatDateFamily_tblDatDateFamily]
+GO
+ALTER TABLE [dbo].[tblDatDateRealm]  WITH CHECK ADD  CONSTRAINT [FK_tblDatDateRealm_tblDatDateRealm] FOREIGN KEY([sysDatDateRealmId_CleansedTo])
+REFERENCES [dbo].[tblDatDateRealm] ([sysDatDateRealmId])
+GO
+ALTER TABLE [dbo].[tblDatDateRealm] CHECK CONSTRAINT [FK_tblDatDateRealm_tblDatDateRealm]
+GO
+ALTER TABLE [dbo].[tblDatDateSequence]  WITH CHECK ADD  CONSTRAINT [FK_tblDatDateSequence_tblDatDateSequenceType] FOREIGN KEY([sysDatDateSequenceTypeId])
+REFERENCES [dbo].[tblDatDateSequenceType] ([sysDatDateSequenceTypeId])
+GO
+ALTER TABLE [dbo].[tblDatDateSequence] CHECK CONSTRAINT [FK_tblDatDateSequence_tblDatDateSequenceType]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceClass]  WITH CHECK ADD  CONSTRAINT [FK_tblDatDateSequenceClass_tblDatDateSequenceClass] FOREIGN KEY([sysDatDateSequenceClassId_CleansedTo])
+REFERENCES [dbo].[tblDatDateSequenceClass] ([sysDatDateSequenceClassId])
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceClass] CHECK CONSTRAINT [FK_tblDatDateSequenceClass_tblDatDateSequenceClass]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceClass]  WITH CHECK ADD  CONSTRAINT [FK_tblDatDateSequenceClass_tblDatDateSequenceRealm] FOREIGN KEY([sysDatDateSequenceRealmId])
+REFERENCES [dbo].[tblDatDateSequenceRealm] ([sysDatDateSequenceRealmId])
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceClass] CHECK CONSTRAINT [FK_tblDatDateSequenceClass_tblDatDateSequenceRealm]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceFamily]  WITH CHECK ADD  CONSTRAINT [FK_tblDatDateSequenceFamily_tblDatDateSequenceClass] FOREIGN KEY([sysDatDateSequenceClassId])
+REFERENCES [dbo].[tblDatDateSequenceClass] ([sysDatDateSequenceClassId])
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceFamily] CHECK CONSTRAINT [FK_tblDatDateSequenceFamily_tblDatDateSequenceClass]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceFamily]  WITH CHECK ADD  CONSTRAINT [FK_tblDatDateSequenceFamily_tblDatDateSequenceFamily] FOREIGN KEY([sysDatDateSequenceFamilyId_CleansedTo])
+REFERENCES [dbo].[tblDatDateSequenceFamily] ([sysDatDateSequenceFamilyId])
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceFamily] CHECK CONSTRAINT [FK_tblDatDateSequenceFamily_tblDatDateSequenceFamily]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceRealm]  WITH CHECK ADD  CONSTRAINT [FK_tblDatDateSequenceRealm_tblDatDateSequenceRealm] FOREIGN KEY([sysDatDateSequenceRealmId_CleansedTo])
+REFERENCES [dbo].[tblDatDateSequenceRealm] ([sysDatDateSequenceRealmId])
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceRealm] CHECK CONSTRAINT [FK_tblDatDateSequenceRealm_tblDatDateSequenceRealm]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceType]  WITH CHECK ADD  CONSTRAINT [FK_tblDatDateSequenceType_tblDatDateSequenceFamily] FOREIGN KEY([sysDatDateSequenceFamilyId])
+REFERENCES [dbo].[tblDatDateSequenceFamily] ([sysDatDateSequenceFamilyId])
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceType] CHECK CONSTRAINT [FK_tblDatDateSequenceType_tblDatDateSequenceFamily]
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceType]  WITH CHECK ADD  CONSTRAINT [FK_tblDatDateSequenceType_tblDatDateSequenceType] FOREIGN KEY([sysDatDateSequenceTypeId_CleansedTo])
+REFERENCES [dbo].[tblDatDateSequenceType] ([sysDatDateSequenceTypeId])
+GO
+ALTER TABLE [dbo].[tblDatDateSequenceType] CHECK CONSTRAINT [FK_tblDatDateSequenceType_tblDatDateSequenceType]
+GO
+ALTER TABLE [dbo].[tblDatDateType]  WITH CHECK ADD  CONSTRAINT [FK_tblDatDateType_tblDatDateFamily] FOREIGN KEY([sysDatDateFamilyId])
+REFERENCES [dbo].[tblDatDateFamily] ([sysDatDateFamilyId])
+GO
+ALTER TABLE [dbo].[tblDatDateType] CHECK CONSTRAINT [FK_tblDatDateType_tblDatDateFamily]
+GO
+ALTER TABLE [dbo].[tblDatDateType]  WITH CHECK ADD  CONSTRAINT [FK_tblDatDateType_tblDatDateType] FOREIGN KEY([sysDatDateTypeId_CleansedTo])
+REFERENCES [dbo].[tblDatDateType] ([sysDatDateTypeId])
+GO
+ALTER TABLE [dbo].[tblDatDateType] CHECK CONSTRAINT [FK_tblDatDateType_tblDatDateType]
+GO
+ALTER TABLE [dbo].[tblDatDayOfWeek]  WITH CHECK ADD  CONSTRAINT [FK_tblDatDayOfWeek_tblDatDayOfWeek] FOREIGN KEY([sysDatDayOfWeekId_CleansedTo])
+REFERENCES [dbo].[tblDatDayOfWeek] ([sysDatDayOfWeekId])
+GO
+ALTER TABLE [dbo].[tblDatDayOfWeek] CHECK CONSTRAINT [FK_tblDatDayOfWeek_tblDatDayOfWeek]
+GO
+ALTER TABLE [dbo].[tblDatMonth]  WITH CHECK ADD  CONSTRAINT [FK_tblDatMonth_tblDatMonth] FOREIGN KEY([sysDatMonthId_CleansedTo])
+REFERENCES [dbo].[tblDatMonth] ([sysDatMonthId])
+GO
+ALTER TABLE [dbo].[tblDatMonth] CHECK CONSTRAINT [FK_tblDatMonth_tblDatMonth]
+GO
+ALTER TABLE [dbo].[tblDatYear]  WITH CHECK ADD  CONSTRAINT [FK_tblDatYear_tblDatYear] FOREIGN KEY([sysDatYearId_CleansedTo])
+REFERENCES [dbo].[tblDatYear] ([sysDatYearId])
+GO
+ALTER TABLE [dbo].[tblDatYear] CHECK CONSTRAINT [FK_tblDatYear_tblDatYear]
+GO
+ALTER TABLE [dbo].[tblDatYearMonth]  WITH CHECK ADD  CONSTRAINT [FK_tblDatYearMonth_tblDatYearMonth] FOREIGN KEY([sysDatYearMonthId_CleansedTo])
+REFERENCES [dbo].[tblDatYearMonth] ([sysDatYearMonthId])
+GO
+ALTER TABLE [dbo].[tblDatYearMonth] CHECK CONSTRAINT [FK_tblDatYearMonth_tblDatYearMonth]
+GO
